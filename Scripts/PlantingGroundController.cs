@@ -37,12 +37,15 @@ public class PlantingGroundController : MonoBehaviour
         {
             if (hit.collider.CompareTag("EmptyPlantingGround"))
             {
-                SetReticleSizeAndColor(reticlePlantingColor, reducedReticleSize);
-                if (doIHaveSeeds && Input.GetKeyDown(KeyCode.P))
+                if (doIHaveSeeds)
                 {
-                    inventory.RemoveAnyOneSeedItem();
-                    PlantCrop(hit);
+                    SetReticleSizeAndColor(reticlePlantingColor, reducedReticleSize);
+                    if (Input.GetKeyDown(KeyCode.P))
+                    {
+                        inventory.RemoveAnyOneSeedItem();
+                        PlantCrop(hit);
 
+                    }
                 }
             }
             else if (hit.collider.CompareTag("FullGrownPlantingGround"))

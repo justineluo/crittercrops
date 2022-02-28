@@ -51,7 +51,7 @@ public class InventoryObject : ScriptableObject
         {
             if (Container[i].item.item.type == ItemType.Seed)
             {
-                count++;
+                count += Container[i].amount;
             }
         }
         return count;

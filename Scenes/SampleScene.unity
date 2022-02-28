@@ -430,15 +430,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 312841545626269758, guid: 4ec9e2c0f84549648bf67ec65d591444, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0.009
       objectReference: {fileID: 0}
     - target: {fileID: 312841545626269758, guid: 4ec9e2c0f84549648bf67ec65d591444, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.394
+      value: 0.43
       objectReference: {fileID: 0}
     - target: {fileID: 312841545626269758, guid: 4ec9e2c0f84549648bf67ec65d591444, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.991
+      value: 0.893
       objectReference: {fileID: 0}
     - target: {fileID: 312841545626269758, guid: 4ec9e2c0f84549648bf67ec65d591444, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5054,11 +5054,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3928642541962355902, guid: 8877f4aac7d3c184ea4954647487e084, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.48000002
+      value: 0.455
       objectReference: {fileID: 0}
     - target: {fileID: 3928642541962355902, guid: 8877f4aac7d3c184ea4954647487e084, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.4499998
+      value: 0.46
       objectReference: {fileID: 0}
     - target: {fileID: 3928642541962355902, guid: 8877f4aac7d3c184ea4954647487e084, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5677,7 +5677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bugSprayVFX: {fileID: 1493373059}
   projectilePrefab: {fileID: 4516599135879785924, guid: d53081be61db8a3469f42dc80a9dc4b2, type: 3}
-  projectileSpeed: 10
+  projectileSpeed: 8
 --- !u!1001 &2104219781
 PrefabInstance:
   m_ObjectHideFlags: 0

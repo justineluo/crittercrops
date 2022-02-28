@@ -6,7 +6,7 @@ public class PlayerBugSpray : MonoBehaviour
 {
     public ParticleSystem bugSprayVFX;
     public GameObject projectilePrefab;
-    public float projectileSpeed = 1f;
+    public float projectileSpeed = 9f;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,7 +49,8 @@ public class PlayerBugSpray : MonoBehaviour
     }
 
     private void ShootHelper(Vector3 projectileAngle) {
-        GameObject projectile = Instantiate(projectilePrefab, transform.position + transform.forward, transform.rotation);
+        GameObject particles = GameObject.FindGameObjectWithTag("ParticleSystem");
+        GameObject projectile = Instantiate(projectilePrefab, particles.transform.position + transform.forward, transform.rotation);
         Rigidbody _rb = projectile.GetComponent<Rigidbody>();
         _rb.AddForce(projectileAngle * projectileSpeed, ForceMode.VelocityChange);
     }

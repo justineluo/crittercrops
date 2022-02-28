@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         else
-        { 
+        {
             // mid-air
             input.y = moveDirection.y;
             moveDirection = Vector3.Lerp(moveDirection, input, Time.deltaTime * airControl);
@@ -54,18 +54,18 @@ public class PlayerController : MonoBehaviour
         _controller.Move(moveDirection * Time.deltaTime);
     }
 
-    public void OnTriggerEnter (Collider other)
+    public void OnTriggerEnter(Collider other)
     {
 
         if (other.gameObject.CompareTag("Item"))
         {
             var item = other.GetComponent<Item>();
-            
-            inventory.AddItem(item.item, 1);
+
+            inventory.AddItem(item, 1);
             Destroy(other.gameObject);
-           
+
         }
-        
+
     }
 
     private void OnApplicationQuit()

@@ -29,7 +29,7 @@ public class DisplayInventory : MonoBehaviour
         for (int i = 0; i < inventory.Container.Count; i++)
         {
 
-            var obj = Instantiate(inventory.Container[i].item.prefab, Vector3.zero, Quaternion.identity, transform);
+            var obj = Instantiate(inventory.Container[i].item.item.prefab, Vector3.zero, Quaternion.identity, transform);
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
             obj.GetComponentInChildren<Text>().text = inventory.Container[i].amount.ToString();
             itemsDisplayed.Add(inventory.Container[i], obj);
@@ -50,12 +50,16 @@ public class DisplayInventory : MonoBehaviour
             {
                 itemsDisplayed[inventory.Container[i]].GetComponentInChildren<Text>().text = inventory.Container[i].amount.ToString();
             }
-            else
+            else if (inventory.Container[i].amount > 0)
             {
-                var obj = Instantiate(inventory.Container[i].item.prefab, Vector3.zero, Quaternion.identity, transform);
+                var obj = Instantiate(inventory.Container[i].item.item.prefab, Vector3.zero, Quaternion.identity, transform);
                 obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
                 obj.GetComponentInChildren<Text>().text = inventory.Container[i].amount.ToString();
                 itemsDisplayed.Add(inventory.Container[i], obj);
+            }
+            else
+            {
+
             }
         }
     }

@@ -33,8 +33,13 @@ public class CritterCropBaseBehavior : MonoBehaviour
         if (distance < critterSightRadius)
         {
             transform.LookAt(player);
-            Vector3 groundPlayerPosition = Vector3.Scale(player.position, new Vector3(1, 0, 1));
-            transform.position = Vector3.MoveTowards(transform.position, groundPlayerPosition, step);
+            Vector3 groundedPlayerPosition = new Vector3(player.position.x, transform.position.y, player.position.z);
+            rb.MovePosition(Vector3.MoveTowards(transform.position, groundedPlayerPosition, step));
+        }
+        else
+        {
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
         }
 
         if (currentHealth <= 0)
@@ -51,7 +56,7 @@ public class CritterCropBaseBehavior : MonoBehaviour
             // var playerHealth = other.GetComponent<PlayerHealth>();
             // playerHealth.TakeDamage(damageAmount);
 
-            // TODO: apply some kind of knockback ApplyKnockBack()
+            ApplyKnockBack(other.transform);
         }
     }
 
@@ -67,10 +72,23 @@ public class CritterCropBaseBehavior : MonoBehaviour
         Destroy(gameObject, .5f);
     }
 
-    private void ApplyKnockBack(Collision other)
+    private void ApplyKnockBack(Transform other)
     {
-        Vector3 dir = (other.transform.position - transform.position).normalized;
-        dir = Vector3.Scale(dir, new Vector3(-1, 0, -1));
-        rb.AddForce(dir * 3, ForceMode.VelocityChange);
+        Vector3 dir = (other.position - transform.position).normalized;
+        dir = new Vector3(dir.x, 0, dir.z);
+        StartCoroutine(KnockBackCoroutine(dir));
+    }
+    IEnumerator KnockBackCoroutine(Vector3 direction)
+    {
+        float timeleft = .3f;
+        Debug.Log(direction * 5);
+        while (timeleft > 0)
+        {
+
+            transform.Translate(direction * Time.deltaTime * 5);
+            timeleft -= Time.deltaTime;
+
+            yield return null;
+        }
     }
 }

@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight = 2f;
     public float airControl = 10f;
     Vector3 input, moveDirection;
+    public InventoryObject inventory;
 
     // Start is called before the first frame update
     void Start()
@@ -52,4 +53,24 @@ public class PlayerController : MonoBehaviour
         moveDirection.y -= gravity * Time.deltaTime;
         _controller.Move(moveDirection * Time.deltaTime);
     }
+
+    public void OnTriggerEnter (Collider other)
+    {
+
+        if (other.gameObject.CompareTag("Item"))
+        {
+            var item = other.GetComponent<Item>();
+            
+            inventory.AddItem(item.item, 1);
+            Destroy(other.gameObject);
+           
+        }
+        
+    }
+
+    private void OnApplicationQuit()
+    {
+        inventory.Container.Clear();
+    }
+
 }

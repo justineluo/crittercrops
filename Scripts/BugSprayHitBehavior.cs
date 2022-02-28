@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class BugSprayHitBehavior : MonoBehaviour
 {
-    public ParticleSystem part;
-    public List<ParticleCollisionEvent> collisionEvents;
+    public GameObject bugSpray;
+    public int bugSprayDamage = 1;
+    public int startingHealth = 300;
+    int currentHealth;
 
     void Start()
     {
-        if (part == null) {
-            part = GetComponent<ParticleSystem>();
-        }
-        collisionEvents = new List<ParticleCollisionEvent>();
+        currentHealth = startingHealth;
     }
 
     // Update is called once per frame
@@ -21,23 +20,24 @@ public class BugSprayHitBehavior : MonoBehaviour
         
     }
 
-    void OnParticleCollision(GameObject other)
-    {
-        Debug.Log("collision");
-        int numCollisionEvents = part.GetCollisionEvents(other, collisionEvents);
-
-        Rigidbody rb = other.GetComponent<Rigidbody>();
-        int i = 0;
-
-        while (i < numCollisionEvents)
-        {
-            if (rb)
-            {
-                Vector3 pos = collisionEvents[i].intersection;
-                Vector3 force = collisionEvents[i].velocity * 10;
-                rb.AddForce(force);
-            }
-            i++;
+    private void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("Projectile")) {
+            TakeDamage();
         }
+    }
+    public void TakeDamage() {
+        if (currentHealth > 0) {
+            currentHealth -= bugSprayDamage;
+        } 
+        if (currentHealth <= 0) {
+            CritterCropDies();
+        }
+        Debug.Log("Current health: " + currentHealth);
+    }
+
+    void CritterCropDies() {
+        //TODO: critter crop drops seeds
+        Debug.Log("RIP mr. crittercrop");
+        Destroy(gameObject);
     }
 }

@@ -20,7 +20,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentMoneyCount = 0;
+        setAndDisplayCurrentMoney(0);
         scene = SceneManager.GetActiveScene();
         // update text
 

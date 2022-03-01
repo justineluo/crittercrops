@@ -10,7 +10,6 @@ public class CritterCropBaseBehavior : MonoBehaviour
     public int damageAmount = 5;
     Rigidbody rb;
     public GameObject seedPrefab;
-
     public int bugSprayDamage = 1;
     public int startingHealth = 300;
     int currentHealth;
@@ -61,23 +60,27 @@ public class CritterCropBaseBehavior : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Projectile")) {
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Projectile"))
+        {
             TakeDamage();
         }
     }
-    
+
     //call this when crittercrop is hit by bug spray
-    public void TakeDamage() {
-        if (currentHealth > 0) {
+    public void TakeDamage()
+    {
+        if (currentHealth > 0)
+        {
             currentHealth -= bugSprayDamage;
-        } 
-        if (currentHealth <= 0) {
+        }
+        if (currentHealth <= 0)
+        {
             CritterDies();
         }
-        Debug.Log("Current health: " + currentHealth);
     }
-    
+
     //call this when the crittercrop runs out of health
     private void CritterDies()
     {
@@ -99,7 +102,6 @@ public class CritterCropBaseBehavior : MonoBehaviour
     IEnumerator KnockBackCoroutine(Vector3 direction)
     {
         float timeleft = .3f;
-        Debug.Log(direction * 5);
         while (timeleft > 0)
         {
 

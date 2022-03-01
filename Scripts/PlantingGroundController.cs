@@ -9,10 +9,11 @@ public class PlantingGroundController : MonoBehaviour
     public Color reticlePlantingColor;
     public Color reticleHarvestingColor;
     Color originalReticleColor;
-    bool canPlayerPlant = false;
     public GameObject plantPrefab;
     public float reticleChangeSpeed = 2f;
 
+    public static int moneyCount = 0;
+    public InventoryObject inventory;
     void Start()
     {
         originalReticleColor = reticleImage.color;
@@ -29,16 +30,22 @@ public class PlantingGroundController : MonoBehaviour
     // Use P and H to plant and harvest the plants respectively
     void ReticleEffect()
     {
+        bool doIHaveSeeds = inventory.GetSeedCount() > 0;
         RaycastHit hit;
         Vector3 reducedReticleSize = new Vector3(.7f, .7f, 1);
         if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
         {
             if (hit.collider.CompareTag("EmptyPlantingGround"))
             {
-                SetReticleSizeAndColor(reticlePlantingColor, reducedReticleSize);
-                if (Input.GetKeyDown(KeyCode.P))
+                if (doIHaveSeeds)
                 {
-                    PlantCrop(hit);
+                    SetReticleSizeAndColor(reticlePlantingColor, reducedReticleSize);
+                    if (Input.GetKeyDown(KeyCode.P))
+                    {
+                        inventory.RemoveAnyOneSeedItem();
+                        PlantCrop(hit);
+
+                    }
                 }
             }
             else if (hit.collider.CompareTag("FullGrownPlantingGround"))
@@ -70,7 +77,7 @@ public class PlantingGroundController : MonoBehaviour
     void HarvestPlant(RaycastHit plantingGround)
     {
         int plantValue = plantingGround.transform.GetChild(0).gameObject.GetComponent<PlantGrowthBehavior>().moniesAmount;
-        FindObjectOfType<LevelManager>().addToCurrentMoney(plantValue);
+        FindObjectOfType<LevelManager>().addToCurrentMoney(plantValue);        
         Destroy(plantingGround.transform.GetChild(0).gameObject);
         plantingGround.collider.tag = "EmptyPlantingGround";
         // maybe add some cute effect and sound when you harvest

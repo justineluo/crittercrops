@@ -10,24 +10,28 @@ public class PlayerBugSpray : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Fire1")) {
+        if (Input.GetButton("Fire1"))
+        {
             bugSprayVFX.Play();
             Shoot();
-        } else {
+        }
+        else
+        {
             bugSprayVFX.Stop();
         }
     }
 
-    void Shoot() {
+    void Shoot()
+    {
         float straightX = transform.forward.x;
         float straightZ = transform.forward.z;
-        
+
         //forward
         ShootHelper(transform.forward);
 
@@ -48,7 +52,8 @@ public class PlayerBugSpray : MonoBehaviour
         ShootHelper(projectileAngle5);
     }
 
-    private void ShootHelper(Vector3 projectileAngle) {
+    private void ShootHelper(Vector3 projectileAngle)
+    {
         GameObject particles = GameObject.FindGameObjectWithTag("ParticleSystem");
         GameObject projectile = Instantiate(projectilePrefab, particles.transform.position + transform.forward, transform.rotation);
         Rigidbody _rb = projectile.GetComponent<Rigidbody>();

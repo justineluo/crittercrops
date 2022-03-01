@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 6919274160690688276}
   - component: {fileID: 6919274160690688273}
   - component: {fileID: 6919274160690688272}
-  - component: {fileID: -551857055063605552}
   m_Layer: 0
   m_Name: ExampleCritterCrop
   m_TagString: Untagged
@@ -131,20 +130,3 @@ MonoBehaviour:
   critterSightRadius: 10
   damageAmount: 5
   seedPrefab: {fileID: 5337714348008483600, guid: 7c0b5f77c9c6738468835e9134eff78e, type: 3}
-  startingHealth: 30
-  critterDieSFX: {fileID: 0}
---- !u!114 &-551857055063605552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6919274160690688279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: add93b7ff4315f94c88d74d2ec6e96f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bugSpray: {fileID: 4516599135879785924, guid: d53081be61db8a3469f42dc80a9dc4b2, type: 3}
-  bugSprayDamage: 1
-  startingHealth: 300

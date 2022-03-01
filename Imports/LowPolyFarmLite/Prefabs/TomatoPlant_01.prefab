@@ -111,5 +111,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startScale: 1
   numOfStages: 4
-  lerpDuration: 2
+  lerpDuration: 20
   moniesAmount: 10

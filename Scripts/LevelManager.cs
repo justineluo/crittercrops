@@ -10,7 +10,7 @@ public class LevelManager : MonoBehaviour
     public static bool isGameOver = false;
     private int currentMoneyCount;
 
-    private int moneyGoal = 100;
+    public int moneyGoal = 100;
 
     public Text moneyCountText;
     public Text statusText;
@@ -29,18 +29,21 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-   
-        if (currentMoneyCount == moneyGoal) {
+
+        if (currentMoneyCount == moneyGoal)
+        {
             LevelWin();
-        } else if (isGameOver) {
+        }
+        else if (isGameOver)
+        {
             LevelLost();
         }
     }
 
     public void addToCurrentMoney(int amount)
     {
-        setAndDisplayCurrentMoney(currentMoneyCount + amount); 
-       
+        setAndDisplayCurrentMoney(currentMoneyCount + amount);
+
     }
 
     private void setAndDisplayCurrentMoney(int amount)
@@ -67,17 +70,18 @@ public class LevelManager : MonoBehaviour
         // call SetGameOverStatus with "YOU WIN!"
         SetGameOverStatus("YOU WIN!");
 
-
         Invoke("LoadNextLevel", 2); // delays it by 2 seconds
 
     }
 
-    public void LoadCurrentLevel() {
+    public void LoadCurrentLevel()
+    {
         int currIndex = scene.buildIndex;
         SceneManager.LoadScene(currIndex, LoadSceneMode.Single);
     }
 
-    public void LoadNextLevel() {
+    public void LoadNextLevel()
+    {
         // TODO
         Debug.Log("Loading next level...");
     }
@@ -93,6 +97,6 @@ public class LevelManager : MonoBehaviour
         statusText.text = gameTextMessage;
         statusText.enabled = true; // can't use SetActive here
 
-    
+
     }
 }

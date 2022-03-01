@@ -13,6 +13,7 @@ public class PlantingGroundController : MonoBehaviour
     public GameObject plantPrefab;
     public float reticleChangeSpeed = 2f;
 
+    public static int moneyCount = 0;
     void Start()
     {
         originalReticleColor = reticleImage.color;
@@ -69,8 +70,7 @@ public class PlantingGroundController : MonoBehaviour
     // Handles the action of harvesting a plant and any dependencies or effetcs  that come with it
     void HarvestPlant(RaycastHit plantingGround)
     {
-        int plantValue = plantingGround.transform.GetChild(0).gameObject.GetComponent<PlantGrowthBehavior>().moniesAmount;
-        FindObjectOfType<LevelManager>().addToCurrentMoney(plantValue);
+        IncreaseMoneies(plantingGround.transform.GetChild(0).gameObject.GetComponent<PlantGrowthBehavior>().moniesAmount);
         Destroy(plantingGround.transform.GetChild(0).gameObject);
         plantingGround.collider.tag = "EmptyPlantingGround";
         // maybe add some cute effect and sound when you harvest
@@ -85,4 +85,9 @@ public class PlantingGroundController : MonoBehaviour
         // maybe add some cute effect and sound when you plant something
     }
 
+    // monies go brrr
+    void IncreaseMoneies(int moneiesEarned)
+    {
+        moneyCount += moneiesEarned;
+    }
 }

@@ -89,8 +89,12 @@ public class CritterCropBaseBehavior : MonoBehaviour
         // Maybe also add a dying animation 
 
         transform.Rotate(-90, 0, 0, Space.Self);
-        Instantiate(seedPrefab, transform.position, transform.rotation);
         Destroy(gameObject, .5f);
+    }
+
+    private void OnDestroy()
+    {
+        Instantiate(seedPrefab, transform.position, transform.rotation);
     }
 
     private void ApplyKnockBack(Transform other)

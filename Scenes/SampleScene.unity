@@ -1256,7 +1256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b270912e06fcc71499b239dee0cd2bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moneyGoal: 20
+  moneyGoal: 100
   moneyCountText: {fileID: 564285980}
   statusText: {fileID: 880992129}
 --- !u!4 &504622351

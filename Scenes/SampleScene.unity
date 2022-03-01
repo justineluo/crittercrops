@@ -1256,6 +1256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b270912e06fcc71499b239dee0cd2bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moneyGoal: 20
   moneyCountText: {fileID: 564285980}
   statusText: {fileID: 880992129}
 --- !u!4 &504622351
@@ -2160,7 +2161,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &880992128
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2187,7 +2188,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880992127}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
@@ -6394,6 +6395,10 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6919274160690688272, guid: 9e8654af43e094e4993408cb75b6c298, type: 3}
+      propertyPath: seedPrefab
+      value: 
+      objectReference: {fileID: 525565594462708004, guid: 7c3b0c4d5388bab48a05ac0365a589a4, type: 3}
     - target: {fileID: 6919274160690688272, guid: 9e8654af43e094e4993408cb75b6c298, type: 3}
       propertyPath: bugSprayDamage
       value: 2

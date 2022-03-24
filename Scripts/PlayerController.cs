@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
         {
             var item = other.GetComponent<Item>();
 
-            inventory.AddItem(item, 1);
+            inventory.AddItem(item.item, 1);
             Destroy(other.gameObject);
 
         }

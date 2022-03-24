@@ -34,7 +34,9 @@ public class CritterCropBaseBehavior : MonoBehaviour
         {
             transform.LookAt(player);
             Vector3 groundedPlayerPosition = new Vector3(player.position.x, transform.position.y, player.position.z);
+
             rb.MovePosition(Vector3.MoveTowards(transform.position, groundedPlayerPosition, step));
+            
         }
         else
         {
@@ -94,8 +96,9 @@ public class CritterCropBaseBehavior : MonoBehaviour
 
     private void OnDestroy()
     {
+
         Instantiate(seedPrefab, transform.position, transform.rotation);
-        Instantiate(seedPrefab, transform.position + Vector3.one, transform.rotation);
+        Instantiate(seedPrefab, transform.position + new Vector3 (0, 1, 0), transform.rotation);
     }
 
     private void ApplyKnockBack(Transform other)

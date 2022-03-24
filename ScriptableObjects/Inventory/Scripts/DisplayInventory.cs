@@ -29,7 +29,7 @@ public class DisplayInventory : MonoBehaviour
         for (int i = 0; i < inventory.Container.Count; i++)
         {
 
-            var obj = Instantiate(inventory.Container[i].item.item.prefab, Vector3.zero, Quaternion.identity, transform);
+            var obj = Instantiate(inventory.Container[i].item.prefab, Vector3.zero, Quaternion.identity, transform);
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
             obj.GetComponentInChildren<Text>().text = inventory.Container[i].amount.ToString();
             itemsDisplayed.Add(inventory.Container[i], obj);
@@ -52,7 +52,7 @@ public class DisplayInventory : MonoBehaviour
             }
             else
             {
-                var obj = Instantiate(inventory.Container[i].item.item.prefab, Vector3.zero, Quaternion.identity, transform);
+                var obj = Instantiate(inventory.Container[i].item.prefab, Vector3.zero, Quaternion.identity, transform);
                 obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
                 obj.GetComponentInChildren<Text>().text = inventory.Container[i].amount.ToString();
                 itemsDisplayed.Add(inventory.Container[i], obj);
@@ -60,7 +60,7 @@ public class DisplayInventory : MonoBehaviour
         }
     }
     /*
-    public void RemoveItem(GameObject item)
+    public void RemoveItem(ItemObject item)
     {
         //If you already know what the index of the item is, skip this part
         int index = -1;
@@ -78,8 +78,8 @@ public class DisplayInventory : MonoBehaviour
             Debug.Log("Item not found in inventory");
             return;
         }
-
-        item = inventory.Container[index].item; //If you don't already have the item reference (this example script does) then grab it now
-        inventory.Container[index] = null; //Remove item from inventory
+        
+       item = inventory.Container[index].item; //If you don't already have the item reference (this example script does) then grab it now
+       inventory.Container[index] = null; //Remove item from inventory
     }*/
 }

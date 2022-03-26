@@ -7,7 +7,7 @@ using UnityEngine;
 public class InventoryObject : ScriptableObject
 {
     public List<InventorySlot> Container = new List<InventorySlot>();
-    public void AddItem(Item _item, int _amount)
+    public void AddItem(ItemObject _item, int _amount)
     {
         bool hasItem = false;
         for (int i = 0; i < Container.Count; i++)
@@ -30,14 +30,16 @@ public class InventoryObject : ScriptableObject
     {
         for (int i = 0; i < Container.Count; i++)
         {
-            if (Container[i].item.item.type == ItemType.Seed)
+            if (Container[i].item.type == ItemType.Seed & Container[i].amount != 0)
             {
+                Container[i].DecreaseItemCount();
+                /*
                 if (Container[i].amount == 0)
                 {
+                    Container.RemoveAt(i);
                     continue;
-                    // Container.RemoveAt(i);
-                }
-                Container[i].DecreaseItemCount();
+                }*/
+
                 return;
 
             }
@@ -49,12 +51,13 @@ public class InventoryObject : ScriptableObject
         int count = 0;
         for (int i = 0; i < Container.Count; i++)
         {
-            if (Container[i].item.item.type == ItemType.Seed)
+            if (Container[i].item.type == ItemType.Seed)
             {
                 count += Container[i].amount;
             }
         }
         return count;
+
     }
 }
 
@@ -62,14 +65,15 @@ public class InventoryObject : ScriptableObject
 public class InventorySlot
 {
 
-    public Item item;
+    public ItemObject item;
     public int amount;
+    /*
     public InventorySlot()
     {
         item = null;
         amount = 0;
-    }
-    public InventorySlot(Item _item, int _amount)
+    }*/
+    public InventorySlot(ItemObject _item, int _amount)
     {
         item = _item;
         amount = _amount;
@@ -79,13 +83,15 @@ public class InventorySlot
     {
         amount += value;
     }
-    public void UpdateSlot(Item _item, int _amount)
+    public void UpdateSlot(ItemObject _item, int _amount)
     {
         item = _item;
         amount = _amount;
     }
     public void DecreaseItemCount()
     {
-        amount--;
+      
+            amount--;
+        
     }
 }

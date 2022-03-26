@@ -14,6 +14,8 @@ public class CritterCropBaseBehavior : MonoBehaviour
     public int startingHealth = 300;
     int currentHealth;
     public AudioClip critterDieSFX;
+
+    public GameObject critterDieVFX;
     // Start is called before the first frame update
     void Start()
     {
@@ -89,7 +91,7 @@ public class CritterCropBaseBehavior : MonoBehaviour
         // TODO: Idk add a Critter Die sounds??
         // AudioSource.PlayClipAtPoint(critterDieSFX, transform.position);
         // Maybe also add a dying animation 
-
+        Instantiate(critterDieVFX, transform.position, transform.rotation);
         transform.Rotate(-90, 0, 0, Space.Self);
         Destroy(gameObject, .5f);
     }

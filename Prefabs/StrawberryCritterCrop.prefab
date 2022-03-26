@@ -1928,6 +1928,7 @@ MonoBehaviour:
   bugSprayDamage: 1
   startingHealth: 300
   critterDieSFX: {fileID: 0}
+  critterDieVFX: {fileID: 4095616659207562207, guid: 64a4e4ef0b1754a089f2429db6af245f, type: 3}
 --- !u!1 &7657338122645612281
 GameObject:
   m_ObjectHideFlags: 0

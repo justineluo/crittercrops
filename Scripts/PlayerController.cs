@@ -11,11 +11,15 @@ public class PlayerController : MonoBehaviour
     public float airControl = 10f;
     Vector3 input, moveDirection;
     public InventoryObject inventory;
+    public AudioClip jumpSFX;
+    public AudioClip pickupSFX;
+    public AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         _controller = GetComponent<CharacterController>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -35,12 +39,14 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButton("Jump"))
             {
                 // jump
+                audioSource.PlayOneShot(jumpSFX);
                 moveDirection.y = Mathf.Sqrt(2 * gravity * jumpHeight);
             }
             else
             {
                 // ground player
                 moveDirection.y = 0.0f;
+                
             }
         }
         else
@@ -60,6 +66,8 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Item"))
         {
             var item = other.GetComponent<Item>();
+
+            audioSource.PlayOneShot(pickupSFX);
 
             inventory.AddItem(item.item, 1);
             Destroy(other.gameObject);

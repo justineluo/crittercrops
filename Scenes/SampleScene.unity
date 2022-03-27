@@ -2300,7 +2300,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-9276
+  m_Name: pb_Mesh-1808
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2635,7 +2635,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-9208
+  m_Name: pb_Mesh-1740
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5844,14 +5844,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2814830469941685494, guid: 78dfd51c49659034f8cc7c2770ab417a, type: 3}
-      propertyPath: critterDieVFX
-      value: 
-      objectReference: {fileID: 4095616659207562207, guid: 64a4e4ef0b1754a089f2429db6af245f, type: 3}
-    - target: {fileID: 2814830469941685494, guid: 78dfd51c49659034f8cc7c2770ab417a, type: 3}
-      propertyPath: bugSprayDamage
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2814830471248589076, guid: 78dfd51c49659034f8cc7c2770ab417a, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -5908,10 +5900,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: StrawberryCritterCrop
       objectReference: {fileID: 0}
-    - target: {fileID: 6398573091955486052, guid: 78dfd51c49659034f8cc7c2770ab417a, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78dfd51c49659034f8cc7c2770ab417a, type: 3}
 --- !u!1001 &3023915125749689389
@@ -5921,14 +5909,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2004775570, guid: c238ee81d147ab447a65ccf435bb57f0, type: 3}
-      propertyPath: critterDieVFX
-      value: 
-      objectReference: {fileID: 4095616659207562207, guid: fd6511e8d14174f2abc532bb86a62727, type: 3}
-    - target: {fileID: 2004775570, guid: c238ee81d147ab447a65ccf435bb57f0, type: 3}
-      propertyPath: bugSprayDamage
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3023915125447009853, guid: c238ee81d147ab447a65ccf435bb57f0, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -5940,10 +5920,6 @@ PrefabInstance:
     - target: {fileID: 3023915127041941180, guid: c238ee81d147ab447a65ccf435bb57f0, type: 3}
       propertyPath: m_Name
       value: PeanutCritterCrop
-      objectReference: {fileID: 0}
-    - target: {fileID: 3023915127041941180, guid: c238ee81d147ab447a65ccf435bb57f0, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 3023915127041941183, guid: c238ee81d147ab447a65ccf435bb57f0, type: 3}
       propertyPath: m_RootOrder

@@ -91,14 +91,15 @@ public class CritterCropBaseBehavior : MonoBehaviour
         // TODO: Idk add a Critter Die sounds??
         // AudioSource.PlayClipAtPoint(critterDieSFX, transform.position);
         // Maybe also add a dying animation 
-        Instantiate(critterDieVFX, transform.position, transform.rotation);
         transform.Rotate(-90, 0, 0, Space.Self);
         Destroy(gameObject, .5f);
     }
 
     private void OnDestroy()
     {
-
+        Vector3 effectPosition = transform.position; 
+        effectPosition.y = transform.position.y + 1;
+        Instantiate(critterDieVFX, effectPosition, transform.rotation);
         Instantiate(seedPrefab, transform.position, transform.rotation);
         Instantiate(seedPrefab, transform.position + new Vector3 (0, 1, 0), transform.rotation);
     }

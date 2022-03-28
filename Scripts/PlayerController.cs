@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
             {
                 // ground player
                 moveDirection.y = 0.0f;
-                
+
             }
         }
         else
@@ -68,10 +68,9 @@ public class PlayerController : MonoBehaviour
             var item = other.GetComponent<Item>();
 
             audioSource.PlayOneShot(pickupSFX);
-
+            Debug.Log(item.item.type);
             inventory.AddItem(item.item, 1);
             Destroy(other.gameObject);
-
         }
 
     }

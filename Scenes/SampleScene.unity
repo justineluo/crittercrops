@@ -20370,9 +20370,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1934495503}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 873b6db6f52144fe4b86f2844ffe6e87, type: 3}
+  m_Script: {fileID: 11500000, guid: b4f624cecdbf2fb4aa44009367520a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyPrefab1: {fileID: 3023915127041941180, guid: c238ee81d147ab447a65ccf435bb57f0, type: 3}
+  enemyPrefab2: {fileID: 6398573091955486052, guid: 78dfd51c49659034f8cc7c2770ab417a, type: 3}
+  spawnTime: 1
+  xMin: -35
+  xMax: 35
+  zMin: -35
+  zMax: 35
 --- !u!4 &1934495505
 Transform:
   m_ObjectHideFlags: 0
@@ -22830,6 +22837,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StrawberryCritterCrop
       objectReference: {fileID: 0}
+    - target: {fileID: 6398573091955486052, guid: 78dfd51c49659034f8cc7c2770ab417a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78dfd51c49659034f8cc7c2770ab417a, type: 3}
 --- !u!1001 &3023915125749689389
@@ -22850,6 +22861,10 @@ PrefabInstance:
     - target: {fileID: 3023915127041941180, guid: c238ee81d147ab447a65ccf435bb57f0, type: 3}
       propertyPath: m_Name
       value: PeanutCritterCrop
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023915127041941180, guid: c238ee81d147ab447a65ccf435bb57f0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3023915127041941183, guid: c238ee81d147ab447a65ccf435bb57f0, type: 3}
       propertyPath: m_RootOrder

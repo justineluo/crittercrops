@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2140727500710933360}
   - component: {fileID: 1723722804736146038}
   - component: {fileID: 1723722804736146039}
+  - component: {fileID: -1384652925780042627}
   m_Layer: 0
   m_Name: PeanutDieEffectsPrefab
   m_TagString: Untagged
@@ -4804,3 +4805,16 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &-1384652925780042627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4095616659207562207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6702cf066e022384793a8417987294b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyDelay: 1.2

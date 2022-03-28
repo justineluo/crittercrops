@@ -262,6 +262,7 @@ MonoBehaviour:
   startingHealth: 300
   audioSource: {fileID: 0}
   critterDieSFX: {fileID: 8300000, guid: 80e397195ea2940b69ee7bdbded856a5, type: 3}
+  critterDieVFX: {fileID: 4095616659207562207, guid: fd6511e8d14174f2abc532bb86a62727, type: 3}
 --- !u!82 &5455035235309709613
 AudioSource:
   m_ObjectHideFlags: 0

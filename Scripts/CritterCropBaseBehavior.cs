@@ -15,6 +15,8 @@ public class CritterCropBaseBehavior : MonoBehaviour
     int currentHealth;
     public AudioSource audioSource;
     public AudioClip critterDieSFX;
+
+    public GameObject critterDieVFX;
     // Start is called before the first frame update
     void Start()
     {
@@ -90,14 +92,16 @@ public class CritterCropBaseBehavior : MonoBehaviour
     {
         audioSource.PlayOneShot(critterDieSFX, 0.5f);
         // Maybe also add a dying animation 
-        
+
         transform.Rotate(-90, 0, 0, Space.Self);
         Destroy(gameObject, .5f);
     }
 
     private void OnDestroy()
     {
-
+        Vector3 effectPosition = transform.position; 
+        effectPosition.y = transform.position.y + 1;
+        Instantiate(critterDieVFX, effectPosition, transform.rotation);
         Instantiate(seedPrefab, transform.position, transform.rotation);
         Instantiate(seedPrefab, transform.position + new Vector3 (0, 1, 0), transform.rotation);
     }

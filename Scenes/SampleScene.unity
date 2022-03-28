@@ -20655,8 +20655,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7006f920a8d9a6047ac658a8c7c0198e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab1: {fileID: 3023915125749689390}
-  enemyPrefab2: {fileID: 615061729}
+  enemyPrefab1: {fileID: 3023915127041941180, guid: c238ee81d147ab447a65ccf435bb57f0, type: 3}
+  enemyPrefab2: {fileID: 6398573091955486052, guid: 78dfd51c49659034f8cc7c2770ab417a, type: 3}
   spawnTime: 10
   xMin: -35
   xMax: 35
@@ -23194,11 +23194,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c238ee81d147ab447a65ccf435bb57f0, type: 3}
---- !u!1 &3023915125749689390 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3023915127041941180, guid: c238ee81d147ab447a65ccf435bb57f0, type: 3}
-  m_PrefabInstance: {fileID: 3023915125749689389}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9169644951736502790
 PrefabInstance:
   m_ObjectHideFlags: 0

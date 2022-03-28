@@ -10,6 +10,7 @@ public class PlantGrowthBehavior : MonoBehaviour
     float timeElapsed = 0;
     public float lerpDuration = 100;
     public int moniesAmount = 10;
+    bool isWatered;
     void Start()
     {
         transform.localScale = Vector3.one * startScale;
@@ -34,5 +35,15 @@ public class PlantGrowthBehavior : MonoBehaviour
             }
         }
 
+    }
+
+    public void WaterPlantOnce(InventoryObject inventory)
+    {
+        if (!isWatered)
+        {
+            isWatered = true;
+            inventory.RemoveOneWaterItem();
+            lerpDuration = timeElapsed + (lerpDuration - timeElapsed) / 2;
+        }
     }
 }

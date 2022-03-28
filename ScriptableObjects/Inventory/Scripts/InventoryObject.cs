@@ -26,11 +26,11 @@ public class InventoryObject : ScriptableObject
         }
     }
 
-    public void RemoveAnyOneSeedItem()
+    void RemoveAnyOneXItem(ItemType type)
     {
         for (int i = 0; i < Container.Count; i++)
         {
-            if (Container[i].item.type == ItemType.Seed & Container[i].amount != 0)
+            if (Container[i].item.type == type & Container[i].amount != 0)
             {
                 Container[i].DecreaseItemCount();
                 /*
@@ -46,19 +46,36 @@ public class InventoryObject : ScriptableObject
         }
     }
 
-    public int GetSeedCount()
+    public void RemoveAnyOneSeedItem()
+    {
+        RemoveAnyOneXItem(ItemType.Seed);
+    }
+    public void RemoveOneWaterItem()
+    {
+        RemoveAnyOneXItem(ItemType.Water);
+    }
+
+    int GetItemXCount(ItemType type)
     {
         int count = 0;
         for (int i = 0; i < Container.Count; i++)
         {
-            if (Container[i].item.type == ItemType.Seed)
+            if (Container[i].item.type == type)
             {
                 count += Container[i].amount;
             }
         }
         return count;
-
     }
+    public int GetSeedCount()
+    {
+        return GetItemXCount(ItemType.Seed);
+    }
+    public int GetWaterCount()
+    {
+        return GetItemXCount(ItemType.Water);
+    }
+
 }
 
 [System.Serializable]
@@ -90,8 +107,8 @@ public class InventorySlot
     }
     public void DecreaseItemCount()
     {
-      
-            amount--;
-        
+
+        amount--;
+
     }
 }

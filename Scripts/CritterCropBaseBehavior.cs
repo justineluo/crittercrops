@@ -34,11 +34,11 @@ public class CritterCropBaseBehavior : MonoBehaviour
         float distance = Vector3.Distance(transform.position, player.position);
         if (distance < critterSightRadius)
         {
+            var height = transform.lossyScale.y;
             transform.LookAt(player);
             Vector3 groundedPlayerPosition = new Vector3(player.position.x, transform.position.y, player.position.z);
 
             rb.MovePosition(Vector3.MoveTowards(transform.position, groundedPlayerPosition, step));
-            
         }
         else
         {
@@ -57,10 +57,12 @@ public class CritterCropBaseBehavior : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             // TODO: do something to damage the player
-            // var playerHealth = other.GetComponent<PlayerHealth>();
-            // playerHealth.TakeDamage(damageAmount);
+            var playerHealth = other.gameObject.GetComponent<PlayerHealth>();
+            playerHealth.TakeDamage(damageAmount);
 
-            ApplyKnockBack(other.transform);
+
+
+            // ApplyKnockBack(other.transform);
         }
     }
 
@@ -90,7 +92,7 @@ public class CritterCropBaseBehavior : MonoBehaviour
     {
         audioSource.PlayOneShot(critterDieSFX, 0.5f);
         // Maybe also add a dying animation 
-        
+
         transform.Rotate(-90, 0, 0, Space.Self);
         Destroy(gameObject, .5f);
     }
@@ -99,7 +101,7 @@ public class CritterCropBaseBehavior : MonoBehaviour
     {
 
         Instantiate(seedPrefab, transform.position, transform.rotation);
-        Instantiate(seedPrefab, transform.position + new Vector3 (0, 1, 0), transform.rotation);
+        Instantiate(seedPrefab, transform.position + new Vector3(0, 1, 0), transform.rotation);
     }
 
     private void ApplyKnockBack(Transform other)
@@ -110,7 +112,7 @@ public class CritterCropBaseBehavior : MonoBehaviour
     }
     IEnumerator KnockBackCoroutine(Vector3 direction)
     {
-        float timeleft = .3f;
+        float timeleft = .5f;
         while (timeleft > 0)
         {
 

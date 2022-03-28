@@ -13,6 +13,7 @@ public class CritterCropBaseBehavior : MonoBehaviour
     public int bugSprayDamage = 1;
     public int startingHealth = 300;
     int currentHealth;
+    public AudioSource audioSource;
     public AudioClip critterDieSFX;
 
     public GameObject critterDieVFX;
@@ -25,6 +26,7 @@ public class CritterCropBaseBehavior : MonoBehaviour
         }
         rb = gameObject.GetComponent<Rigidbody>();
         currentHealth = startingHealth;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -88,9 +90,9 @@ public class CritterCropBaseBehavior : MonoBehaviour
     //call this when the crittercrop runs out of health
     private void CritterDies()
     {
-        // TODO: Idk add a Critter Die sounds??
-        // AudioSource.PlayClipAtPoint(critterDieSFX, transform.position);
+        audioSource.PlayOneShot(critterDieSFX, 0.5f);
         // Maybe also add a dying animation 
+
         transform.Rotate(-90, 0, 0, Space.Self);
         Destroy(gameObject, .5f);
     }

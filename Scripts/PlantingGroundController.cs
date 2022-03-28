@@ -14,9 +14,13 @@ public class PlantingGroundController : MonoBehaviour
 
     public static int moneyCount = 0;
     public InventoryObject inventory;
+    public AudioSource audioSource;
+    public AudioClip plantSFX;
+    public AudioClip harvestSFX;
     void Start()
     {
         originalReticleColor = reticleImage.color;
+        audioSource = GetComponent<AudioSource>();
     }
     void FixedUpdate()
     {
@@ -44,7 +48,7 @@ public class PlantingGroundController : MonoBehaviour
                     {
                         inventory.RemoveAnyOneSeedItem();
                         PlantCrop(hit);
-
+                        audioSource.PlayOneShot(plantSFX);
                     }
                 }
             }
@@ -54,6 +58,7 @@ public class PlantingGroundController : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.H))
                 {
                     HarvestPlant(hit);
+                    audioSource.PlayOneShot(harvestSFX);
                 }
             }
             else

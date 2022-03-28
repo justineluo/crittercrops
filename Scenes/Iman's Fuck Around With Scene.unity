@@ -826,10 +826,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Well
       objectReference: {fileID: 0}
-    - target: {fileID: 1508764703267524, guid: 09dd70b4470036f4988070b63e2ae21c, type: 3}
-      propertyPath: m_TagString
-      value: Item
-      objectReference: {fileID: 0}
     - target: {fileID: 4087292842198450, guid: 09dd70b4470036f4988070b63e2ae21c, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -873,10 +869,6 @@ PrefabInstance:
     - target: {fileID: 4087292842198450, guid: 09dd70b4470036f4988070b63e2ae21c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 64961876980979764, guid: 09dd70b4470036f4988070b63e2ae21c, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09dd70b4470036f4988070b63e2ae21c, type: 3}
@@ -2015,24 +2007,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4676834955950056, guid: 42d1aa1e935099b44bbee795578466c2, type: 3}
   m_PrefabInstance: {fileID: 82893332}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &873055446 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1508764703267524, guid: 09dd70b4470036f4988070b63e2ae21c, type: 3}
-  m_PrefabInstance: {fileID: 387252034}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &873055447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 873055446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05d467dac04e4104d86a45e372313a8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 58b6981b974bbda489162e2fb22c8c1f, type: 2}
 --- !u!1 &880992127
 GameObject:
   m_ObjectHideFlags: 0
@@ -4410,6 +4384,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3008297296413678391, guid: cb422acdc199d6e42910f589b81c283b, type: 3}
   m_PrefabInstance: {fileID: 2104219781}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &1481244880 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5888682681652281607, guid: 437d589b2f6783c40a2d1f08a404736a, type: 3}
+  m_PrefabInstance: {fileID: 2052555079}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1504502133 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000010140763972, guid: b12c8b6046ef0604b96e60fe14b9c16e, type: 3}
@@ -6082,31 +6061,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 312841545626269758, guid: 437d589b2f6783c40a2d1f08a404736a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.8800119
       objectReference: {fileID: 0}
     - target: {fileID: 312841545626269758, guid: 437d589b2f6783c40a2d1f08a404736a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.107172996
       objectReference: {fileID: 0}
     - target: {fileID: 312841545626269758, guid: 437d589b2f6783c40a2d1f08a404736a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.4588476
       objectReference: {fileID: 0}
     - target: {fileID: 312841545626269758, guid: 437d589b2f6783c40a2d1f08a404736a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.059598025
       objectReference: {fileID: 0}
     - target: {fileID: 312841545626269758, guid: 437d589b2f6783c40a2d1f08a404736a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
+      value: -7.697
       objectReference: {fileID: 0}
     - target: {fileID: 312841545626269758, guid: 437d589b2f6783c40a2d1f08a404736a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -55.875
       objectReference: {fileID: 0}
     - target: {fileID: 312841545626269758, guid: 437d589b2f6783c40a2d1f08a404736a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 11.835
       objectReference: {fileID: 0}
     - target: {fileID: 1133148994881322266, guid: 437d589b2f6783c40a2d1f08a404736a, type: 3}
       propertyPath: m_Name
@@ -6488,6 +6467,10 @@ PrefabInstance:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 229006282}
+    - target: {fileID: 2804228357279637090, guid: 9947a75865be1844d832cf4578476330, type: 3}
+      propertyPath: wateringVFX
+      value: 
+      objectReference: {fileID: 1481244880}
     - target: {fileID: 2804228357279637090, guid: 9947a75865be1844d832cf4578476330, type: 3}
       propertyPath: reticleImage
       value: 

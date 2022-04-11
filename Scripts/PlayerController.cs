@@ -12,8 +12,11 @@ public class PlayerController : MonoBehaviour
     Vector3 input, moveDirection;
     public InventoryObject inventory;
     public AudioClip jumpSFX;
+    public AudioClip walkSFX;
     public AudioClip pickupSFX;
     public AudioSource audioSource;
+
+    bool isPlayingWalkAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +42,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButton("Jump"))
             {
                 // jump
-                audioSource.PlayOneShot(jumpSFX);
+                AudioSource.PlayClipAtPoint(jumpSFX, transform.position);
                 moveDirection.y = Mathf.Sqrt(2 * gravity * jumpHeight);
             }
             else
@@ -58,6 +61,21 @@ public class PlayerController : MonoBehaviour
 
         moveDirection.y -= gravity * Time.deltaTime;
         _controller.Move(moveDirection * Time.deltaTime);
+        
+        PlayWalkAudio();
+    }
+
+    void PlayWalkAudio() {
+        //if player is moving, is on the ground, and the audio is not already playing, play walk sfx
+        if ((Input.GetAxis("Horizontal") != 0.0 || Input.GetAxis("Vertical") != 0.0) 
+            && transform.position.y < 1.3 && !isPlayingWalkAudio) {
+            audioSource.PlayOneShot(walkSFX);
+            isPlayingWalkAudio = true;
+        } else if (!((Input.GetAxis("Horizontal") != 0.0 || Input.GetAxis("Vertical") != 0.0) 
+            && transform.position.y < 1.3)) {
+            isPlayingWalkAudio = false;
+            audioSource.Stop();
+        }
     }
 
     public void OnTriggerEnter(Collider other)

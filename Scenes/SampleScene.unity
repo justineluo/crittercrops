@@ -23566,6 +23566,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 2c5292ba5cf254919a6b9e2b18e04f49, type: 3}
     - target: {fileID: 6437292023484635555, guid: 9947a75865be1844d832cf4578476330, type: 3}
+      propertyPath: walkSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: b5635023615e997428fae736cb5a737b, type: 3}
+    - target: {fileID: 6437292023484635555, guid: 9947a75865be1844d832cf4578476330, type: 3}
       propertyPath: pickupSFX
       value: 
       objectReference: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}

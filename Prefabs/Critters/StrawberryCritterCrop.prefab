@@ -634,6 +634,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   critterDieSFX: {fileID: 8300000, guid: 80e397195ea2940b69ee7bdbded856a5, type: 3}
   critterDieVFX: {fileID: 4095616659207562207, guid: 64a4e4ef0b1754a089f2429db6af245f, type: 3}
+  noticePlayerSFX: {fileID: 8300000, guid: 05c3a437e89dec74c97f50a914ceffbd, type: 3}
 --- !u!82 &8336788951158866937
 AudioSource:
   m_ObjectHideFlags: 0
@@ -646,7 +647,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -17,6 +17,8 @@ public class CritterCropBaseBehavior : MonoBehaviour
     public AudioClip critterDieSFX;
 
     public GameObject critterDieVFX;
+    public AudioClip noticePlayerSFX;
+    bool isNewSighting = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,11 @@ public class CritterCropBaseBehavior : MonoBehaviour
         float distance = Vector3.Distance(transform.position, player.position);
         if (distance < critterSightRadius)
         {
+            if (isNewSighting) {
+                AudioSource.PlayClipAtPoint(noticePlayerSFX, Camera.main.transform.position);
+                isNewSighting = false;
+            }
+
             var height = transform.lossyScale.y;
             transform.LookAt(player);
             Vector3 groundedPlayerPosition = new Vector3(player.position.x, transform.position.y, player.position.z);
@@ -46,6 +53,7 @@ public class CritterCropBaseBehavior : MonoBehaviour
         {
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
+            isNewSighting = true;
         }
 
         if (currentHealth <= 0)
@@ -92,7 +100,7 @@ public class CritterCropBaseBehavior : MonoBehaviour
     //call this when the crittercrop runs out of health
     private void CritterDies()
     {
-        audioSource.PlayOneShot(critterDieSFX, 0.5f);
+        audioSource.PlayOneShot(critterDieSFX, 0.2f);
         // Maybe also add a dying animation 
 
         transform.Rotate(-90, 0, 0, Space.Self);

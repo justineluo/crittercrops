@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
         //if player is moving, is on the ground, and the audio is not already playing, play walk sfx
         if ((Input.GetAxis("Horizontal") != 0.0 || Input.GetAxis("Vertical") != 0.0) 
             && transform.position.y < 1.3 && !isPlayingWalkAudio) {
-            audioSource.PlayOneShot(walkSFX);
+            audioSource.PlayOneShot(walkSFX, 0.5f);
             isPlayingWalkAudio = true;
         } else if (!((Input.GetAxis("Horizontal") != 0.0 || Input.GetAxis("Vertical") != 0.0) 
             && transform.position.y < 1.3)) {

@@ -92,20 +92,20 @@ public class PlantingGroundController : MonoBehaviour
     // state: EmptyPlantingGround, there is no plant present
     // state: FullPlantingGround, there is a plant that is not ready to harvest
     // state: FullGrownPlantingGround, there is a plant ready to harvest
-    // Use P and H to plant and harvest the plants respectively
+    // Use Q and R to plant and harvest the plants respectively
     void ReticleEffect()
     {
         bool doIHaveSeeds = inventory.GetSeedCount() > 0;
         bool doIHaveWater = inventory.GetWaterCount() > 0;
         RaycastHit hit;
         Vector3 reducedReticleSize = new Vector3(.7f, .7f, 1);
-        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 5))
         {
 
             if (hit.collider.CompareTag("EmptyPlantingGround") && doIHaveSeeds)
             {
                 UpdateReticle(reticlePlantingColor, reducedReticleSize, false);
-                if (Input.GetKeyDown(KeyCode.P))
+                if (Input.GetKeyDown(KeyCode.Q))
                 {
                     inventory.RemoveAnyOneSeedItem();
                     PlantCrop(hit);
@@ -115,7 +115,7 @@ public class PlantingGroundController : MonoBehaviour
             else if (hit.collider.CompareTag("FullGrownPlantingGround"))
             {
                 UpdateReticle(reticleHarvestingColor, reducedReticleSize, true);
-                if (Input.GetKeyDown(KeyCode.H))
+                if (Input.GetKeyDown(KeyCode.R))
                 {
                     HarvestPlant(hit);
                     audioSource.PlayOneShot(harvestSFX);

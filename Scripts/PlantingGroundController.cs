@@ -159,7 +159,7 @@ public class PlantingGroundController : MonoBehaviour
         float straightZ = transform.forward.z;
 
         //forward
-        ShootHelper(transform.forward);
+        ShootHelper(Camera.main.transform.forward);
 
         // 45 degree from forward
         Vector3 projectileAngle2 = new Vector3(straightX * .707f - straightZ * .707f, 0, straightX * .707f + straightZ * .707f);

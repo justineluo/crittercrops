@@ -12,13 +12,16 @@ public class WeaponChangeBehavior : MonoBehaviour
     private Button[] buttons;
     private int previousWeaponIndex;
 
+    void Awake() {
+        PlantingGroundController.currentVFX = weaponVFX[selectedWeaponIndex];
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
         buttons = weaponUI.GetComponentsInChildren<Button>();
         weapons[selectedWeaponIndex].SetActive(true);
         UpdateWeaponUI();
-        PlantingGroundController.currentVFX = weaponVFX[selectedWeaponIndex];
     }
 
     // Update is called once per frame

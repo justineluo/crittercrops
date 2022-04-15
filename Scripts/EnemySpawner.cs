@@ -17,11 +17,6 @@ public class EnemySpawner : MonoBehaviour
 
     GameObject[] enemiesInScene;
     // Start is called before the first frame update
-    void Start()
-    {
-        Debug.Log("enemyspawner at " + transform.position);
-
-    }
 
     void Update()
     {

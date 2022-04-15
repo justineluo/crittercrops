@@ -7,7 +7,6 @@ public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab1;
     public GameObject enemyPrefab2;
-    public float spawnTime = 7; 
     public float xMin = -6;
     public float xMax = 6;    
     public float zMin = -6;

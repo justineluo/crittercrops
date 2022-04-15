@@ -36,14 +36,6 @@ public class EnemySpawner : MonoBehaviour
 
 
     }
-
-    void OnDrawGizmosSelected()
-    {
-        // Draw a yellow cube at the transform position
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(transform.position, new Vector3(5, 5, 5));
-    }
-
     void SpawnEnemies()
     {  
         if(elapsedTime >= spawnRate)

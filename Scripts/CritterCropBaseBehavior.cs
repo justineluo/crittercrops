@@ -41,7 +41,8 @@ public class CritterCropBaseBehavior : MonoBehaviour
         float distance = Vector3.Distance(transform.position, player.position);
         if (distance < critterSightRadius)
         {
-            if (isNewSighting) {
+            if (isNewSighting)
+            {
                 AudioSource.PlayClipAtPoint(noticePlayerSFX, Camera.main.transform.position);
                 isNewSighting = false;
             }
@@ -118,10 +119,14 @@ public class CritterCropBaseBehavior : MonoBehaviour
 
     private void OnDestroy()
     {
-        Vector3 effectPosition = transform.position; 
-        effectPosition.y = transform.position.y + 1;
-        Instantiate(critterDieVFX, effectPosition, transform.rotation);
-        Instantiate(seedPrefab, transform.position + new Vector3(0, -0.75f, 0), transform.rotation);
+        if (!LevelManager.isGameOver)
+        {
+            Vector3 effectPosition = transform.position;
+            effectPosition.y = transform.position.y + 1;
+            Instantiate(critterDieVFX, effectPosition, transform.rotation);
+            Instantiate(seedPrefab, transform.position + new Vector3(0, -0.75f, 0), transform.rotation);
+
+        }
     }
 
     private void ApplyKnockBack(Transform other)

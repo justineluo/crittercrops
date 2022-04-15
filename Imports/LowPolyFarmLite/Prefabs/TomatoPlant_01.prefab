@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2906742830763671551}
   - component: {fileID: 7999037779904706423}
   - component: {fileID: 281327026}
+  - component: {fileID: 207748368061730843}
   m_Layer: 0
   m_Name: TomatoPlant_01
   m_TagString: Untagged
@@ -113,3 +114,17 @@ MonoBehaviour:
   numOfStages: 4
   lerpDuration: 20
   moniesAmount: 10
+--- !u!136 &207748368061730843
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2906742830765859135}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.29561096
+  m_Height: 0.867793
+  m_Direction: 1
+  m_Center: {x: -0.048345655, y: 0.4316083, z: 0.03438352}

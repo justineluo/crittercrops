@@ -175,7 +175,7 @@ MonoBehaviour:
   moveSpeed: 2
   player: {fileID: 0}
   critterSightRadius: 10
-  damageAmount: 5
+  damageAmount: 10
   seedPrefab: {fileID: 525565594462708004, guid: 1c4b87aed072a1e48a8e6147d8f8debd, type: 3}
   bugSprayDamage: 1
   startingHealth: 300

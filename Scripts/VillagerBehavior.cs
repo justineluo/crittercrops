@@ -52,7 +52,8 @@ public class VillagerBehavior : MonoBehaviour
         }
        if (distanceToPlayer <= 10)
        {
-          currentState = FSMStates.Converse;
+            agent.speed = 0f;
+            currentState = FSMStates.Converse;
        } else {
             currentState = FSMStates.Stroll;
 
@@ -66,7 +67,7 @@ public class VillagerBehavior : MonoBehaviour
 
         agent.speed = 3f;
 
-        if(Vector3.Distance(transform.position, nextDestination) <= 1)
+        if(Vector3.Distance(transform.position, nextDestination) <= 2)
         {
             nextDestination = wanderPoints[currentDestinationIndex].transform.position;
             currentDestinationIndex = (currentDestinationIndex + 1 ) % wanderPoints.Length;
@@ -81,7 +82,6 @@ public class VillagerBehavior : MonoBehaviour
 
     void UpdateConverseState()
     { 
-        
         if (!startedConvo) 
         {
             FindObjectOfType<DialogManager>().StartDialog(NPCname);

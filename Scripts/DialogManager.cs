@@ -24,8 +24,9 @@ public class DialogManager : MonoBehaviour
         sentences.Enqueue("To damage CritterCrops, aim your spray bottle to stray pesticide on them. That should give them damage.");
         sentences.Enqueue("If you manage to kill them, you can pick up the seeds they drop by making contact.");
         sentences.Enqueue("You can grow crops out of these seeds for money.");
-        sentences.Enqueue("Then you can try planting in this farm land here by pressing p.");
-        sentences.Enqueue("Once the plant's ready, press h to harvest it.");
+        sentences.Enqueue("Then you can try planting in this farm land here by pressing q.");
+        sentences.Enqueue("Once the plant's ready, press r to harvest it.");
+        sentences.Enqueue("To run, press Shift.");
         sentences.Enqueue("Good luck!");
     }
 

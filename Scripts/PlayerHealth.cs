@@ -10,6 +10,10 @@ public class PlayerHealth : MonoBehaviour
     int currentHealth;
     public Slider healthSlider;
     // Start is called before the first frame update
+    void Awake()
+    {
+        currentHealth = startingHealth;
+    }
     void Start()
     {
         currentHealth = startingHealth;
@@ -46,6 +50,7 @@ public class PlayerHealth : MonoBehaviour
 
     void PlayerDies()
     {
+        
         FindObjectOfType<LevelManager>().LevelLost();
     }
 }

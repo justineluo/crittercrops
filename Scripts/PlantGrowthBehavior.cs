@@ -42,8 +42,14 @@ public class PlantGrowthBehavior : MonoBehaviour
         if (!isWatered)
         {
             isWatered = true;
-            inventory.RemoveOneWaterItem();
+            StartCoroutine(RemoveWater(inventory));
             lerpDuration = timeElapsed + (lerpDuration - timeElapsed) / 2;
         }
+    }
+
+    // removes water from inventory after 3 second watering period
+    IEnumerator RemoveWater(InventoryObject inventory) {
+        yield return new WaitForSeconds(3f);
+        inventory.RemoveOneWaterItem();
     }
 }

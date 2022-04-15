@@ -88,7 +88,7 @@ public class CritterCropBaseBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Projectile"))
+        if (other.CompareTag("Projectile") && WeaponChangeBehavior.selectedWeaponIndex == 0)
         {
             TakeDamage();
         }
@@ -124,7 +124,7 @@ public class CritterCropBaseBehavior : MonoBehaviour
             Vector3 effectPosition = transform.position;
             effectPosition.y = transform.position.y + 1;
             Instantiate(critterDieVFX, effectPosition, transform.rotation);
-            Instantiate(seedPrefab, transform.position + new Vector3(0, -0.75f, 0), transform.rotation);
+            Instantiate(seedPrefab, transform.position + new Vector3(0, -0.25f, 0), transform.rotation);
 
         }
     }

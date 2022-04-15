@@ -624,7 +624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1670c58fc24535648964f9a204bd9560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 4
   player: {fileID: 0}
   critterSightRadius: 10
   damageAmount: 5
@@ -635,6 +635,7 @@ MonoBehaviour:
   critterDieSFX: {fileID: 8300000, guid: 80e397195ea2940b69ee7bdbded856a5, type: 3}
   critterDieVFX: {fileID: 4095616659207562207, guid: 64a4e4ef0b1754a089f2429db6af245f, type: 3}
   noticePlayerSFX: {fileID: 8300000, guid: 05c3a437e89dec74c97f50a914ceffbd, type: 3}
+  attackRate: 5
 --- !u!82 &8336788951158866937
 AudioSource:
   m_ObjectHideFlags: 0

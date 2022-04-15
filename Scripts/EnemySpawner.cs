@@ -40,7 +40,6 @@ public class EnemySpawner : MonoBehaviour
 
                 enemyPosition.y = 0.5f;
                 enemyPosition.z += transform.position.x + Random.Range(zMin, zMax);
-                Debug.Log("enemyPosition at " + enemyPosition);
 
                 int enemyIndex = Random.Range(0, 2);
                 GameObject enemyPrefab;

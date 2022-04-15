@@ -71,7 +71,6 @@ public class VillagerBehavior : MonoBehaviour
         {
             nextDestination = wanderPoints[currentDestinationIndex].transform.position;
             currentDestinationIndex = (currentDestinationIndex + 1 ) % wanderPoints.Length;
-            Debug.Log("Going to next wanderpoint");
         }
 
         FaceTarget(nextDestination);

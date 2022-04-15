@@ -21,6 +21,11 @@ public class LevelManager : MonoBehaviour
     bool hasPlayedEndSFX;
 
     // Start is called before the first frame update
+    void Awake()
+    {
+        isGameOver = false;
+    }
+
     void Start()
     {
         setAndDisplayCurrentMoney(0);
@@ -36,10 +41,6 @@ public class LevelManager : MonoBehaviour
         if (currentMoneyCount == moneyGoal)
         {
             LevelWin();
-        }
-        else if (isGameOver)
-        {
-            LevelLost();
         }
     }
 
@@ -78,20 +79,16 @@ public class LevelManager : MonoBehaviour
 
     public void LoadCurrentLevel()
     {
-        int currIndex = scene.buildIndex;
-        SceneManager.LoadScene(currIndex, LoadSceneMode.Single);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LoadNextLevel()
     {
-        // TODO
-        Debug.Log("Loading next level...");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     void SetGameOverStatus(string gameTextMessage, AudioClip sfx)
     {
-
-        // set isGameOver 
         isGameOver = true;
 
         // update gameText UI component with appropriate message and activate it
@@ -99,7 +96,8 @@ public class LevelManager : MonoBehaviour
         statusText.text = gameTextMessage;
         statusText.enabled = true; // can't use SetActive here
 
-        if (!hasPlayedEndSFX) {
+        if (!hasPlayedEndSFX)
+        {
             AudioSource.PlayClipAtPoint(sfx, Camera.main.transform.position);
             hasPlayedEndSFX = true;
         }

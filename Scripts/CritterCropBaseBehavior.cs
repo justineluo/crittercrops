@@ -18,6 +18,9 @@ public class CritterCropBaseBehavior : MonoBehaviour
 
     public GameObject critterDieVFX;
     public AudioClip noticePlayerSFX;
+    public float attackRate = 3f;
+    float elapsedTime = 0f;
+
     bool isNewSighting = true;
     // Start is called before the first frame update
     void Start()
@@ -61,6 +64,8 @@ public class CritterCropBaseBehavior : MonoBehaviour
         {
             CritterDies();
         }
+        elapsedTime += Time.deltaTime;
+
     }
 
     private void OnCollisionEnter(Collision other)
@@ -68,9 +73,14 @@ public class CritterCropBaseBehavior : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             // TODO: do something to damage the player
-            var playerHealth = other.gameObject.GetComponent<PlayerHealth>();
-            playerHealth.TakeDamage(damageAmount);
 
+        // only attacks every 5 seconds
+        if(elapsedTime >= attackRate)
+            {
+                var playerHealth = other.gameObject.GetComponent<PlayerHealth>();
+                playerHealth.TakeDamage(damageAmount);
+                elapsedTime = 0.0f;
+            }
 
             // ApplyKnockBack(other.transform);
         }
@@ -114,8 +124,8 @@ public class CritterCropBaseBehavior : MonoBehaviour
             Vector3 effectPosition = transform.position;
             effectPosition.y = transform.position.y + 1;
             Instantiate(critterDieVFX, effectPosition, transform.rotation);
-            Instantiate(seedPrefab, transform.position, transform.rotation);
-            Instantiate(seedPrefab, transform.position + new Vector3(0, 1, 0), transform.rotation);
+            Instantiate(seedPrefab, transform.position + new Vector3(0, -0.75f, 0), transform.rotation);
+
         }
     }
 

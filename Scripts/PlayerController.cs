@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
 
-        if (other.gameObject.CompareTag("Item"))
+        if (other.gameObject.CompareTag("Item") || other.gameObject.CompareTag("Well"))
         {
             var item = other.GetComponent<Item>();
 

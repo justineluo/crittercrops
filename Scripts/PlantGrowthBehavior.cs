@@ -20,7 +20,7 @@ public class PlantGrowthBehavior : MonoBehaviour
     {
         // while the lerp hasn't finished, continue to lerp the growth value and increase the size of the
         // plant in staggered stages until it is fully grown
-        if (timeElapsed < lerpDuration)
+        if (timeElapsed < lerpDuration && isWatered)
         {
             float growth = Mathf.Lerp(.0001f, 1f, timeElapsed / lerpDuration);
             timeElapsed += Time.deltaTime;
@@ -49,7 +49,7 @@ public class PlantGrowthBehavior : MonoBehaviour
 
     // removes water from inventory after 3 second watering period
     IEnumerator RemoveWater(InventoryObject inventory) {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         inventory.RemoveOneWaterItem();
     }
 }

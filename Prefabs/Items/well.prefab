@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 873055447}
   m_Layer: 0
   m_Name: well
-  m_TagString: Item
+  m_TagString: Well
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,4 +109,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d467dac04e4104d86a45e372313a8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 58b6981b974bbda489162e2fb22c8c1f, type: 2}
+  item: {fileID: 11400000, guid: 2311dc8f8306b2249b3c2ad6eb10d0b6, type: 2}

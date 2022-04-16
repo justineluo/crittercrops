@@ -10,7 +10,10 @@ public class InventoryScreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (inventoryScreen == null)
+        {
+            inventoryScreen = GameObject.FindGameObjectWithTag("InventoryScreen");
+        }
     }
 
     // Update is called once per frame

@@ -9021,7 +9021,6 @@ GameObject:
   - component: {fileID: 717402877}
   - component: {fileID: 717402876}
   - component: {fileID: 717402875}
-  - component: {fileID: 717402879}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -9116,19 +9115,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &717402879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 717402874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89f8b1ced09b1534c8c8b7c5c38f13ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryScreen: {fileID: 0}
 --- !u!4 &718324771 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000012795208846, guid: e318266f60803d548a4b409b52b39d8d, type: 3}
@@ -19321,6 +19307,7 @@ GameObject:
   - component: {fileID: 1606569887}
   - component: {fileID: 1606569886}
   - component: {fileID: 1606569885}
+  - component: {fileID: 1606569889}
   m_Layer: 5
   m_Name: InventoryCanvas
   m_TagString: Untagged
@@ -19409,6 +19396,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1606569889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606569884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89f8b1ced09b1534c8c8b7c5c38f13ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryScreen: {fileID: 1264806617}
 --- !u!1 &1611919935 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1101526658510524, guid: 0922ee3a38e19aa4ea103aefd1704e0d, type: 3}

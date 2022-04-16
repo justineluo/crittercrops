@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         input = (transform.right * moveHorizontal + transform.forward * moveVertical).normalized;
 
         input *= moveSpeed;
-        
+
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
@@ -75,18 +75,22 @@ public class PlayerController : MonoBehaviour
 
         moveDirection.y -= gravity * Time.deltaTime;
         _controller.Move(moveDirection * Time.deltaTime);
-        
+
         PlayWalkAudio();
     }
 
-    void PlayWalkAudio() {
+    void PlayWalkAudio()
+    {
         //if player is moving, is on the ground, and the audio is not already playing, play walk sfx
-        if ((Input.GetAxis("Horizontal") != 0.0 || Input.GetAxis("Vertical") != 0.0) 
-            && transform.position.y < 1.3 && !isPlayingWalkAudio) {
+        if ((Input.GetAxis("Horizontal") != 0.0 || Input.GetAxis("Vertical") != 0.0)
+            && transform.position.y < 1.3 && !isPlayingWalkAudio && !HelpPanelBehavior.isGamePaused)
+        {
             audioSource.PlayOneShot(walkSFX, 0.5f);
             isPlayingWalkAudio = true;
-        } else if (!((Input.GetAxis("Horizontal") != 0.0 || Input.GetAxis("Vertical") != 0.0) 
-            && transform.position.y < 1.3)) {
+        }
+        else if (HelpPanelBehavior.isGamePaused || !((Input.GetAxis("Horizontal") != 0.0 || Input.GetAxis("Vertical") != 0.0)
+          && transform.position.y < 1.3))
+        {
             isPlayingWalkAudio = false;
             audioSource.Stop();
         }

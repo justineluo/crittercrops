@@ -19,14 +19,16 @@ public class PlayerBugSpray : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1")) {
+        if (Input.GetButtonDown("Fire1"))
+        {
             audioSource.PlayOneShot(spraySFX);
         }
 
-        if (Input.GetButtonUp("Fire1")) {
+        if (Input.GetButtonUp("Fire1"))
+        {
             audioSource.Stop();
         }
-        
+
         if (Input.GetButton("Fire1"))
         {
             bugSprayVFX.Play();

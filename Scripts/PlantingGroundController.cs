@@ -14,10 +14,7 @@ public class PlantingGroundController : MonoBehaviour
     public GameObject plantPrefab;
     public static int moneyCount = 0;
     public InventoryObject inventory;
-
-
-    public ParticleSystem bugSprayVFX;
-    public ParticleSystem wateringVFX;
+    public static ParticleSystem currentVFX;
     bool isWatering;
     public GameObject projectilePrefab;
     public float projectileSpeed = 9f;
@@ -28,18 +25,23 @@ public class PlantingGroundController : MonoBehaviour
     public AudioClip harvestSFX;
     public AudioClip spraySFX;
 
+    bool doIHaveSeeds;
+    bool doIHaveWater;
+
     void Start()
     {
         originalReticleColor = reticleImage.color;
         audioSource = GetComponent<AudioSource>();
-
-        wateringVFX.Stop();
-        bugSprayVFX.Stop();
     }
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        doIHaveSeeds = inventory.GetSeedCount() > 0;
+        doIHaveWater = inventory.GetWaterCount() > 0;
+
+        // TODO: have different sound for spray and watering
+        if ((Input.GetButtonDown("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 0) 
+            || (Input.GetButtonDown("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 1 && doIHaveWater))
         {
             audioSource.PlayOneShot(spraySFX);
         }
@@ -49,37 +51,21 @@ public class PlantingGroundController : MonoBehaviour
             audioSource.Stop();
         }
 
-        if (isWatering)
-        {
-            fireWatering();
-        }
-        else
-        {
-            fireBugSpray();
-        }
+        ShootProjectile();
     }
 
-    void fireBugSpray()
+    void ShootProjectile()
     {
-        if (Input.GetButton("Fire1"))
+        bool doIHaveWater = inventory.GetWaterCount() > 0;
+        if ((Input.GetButton("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 0) 
+            || (Input.GetButton("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 1 && doIHaveWater))
         {
-            bugSprayVFX.Play();
+            currentVFX.Play();
             Shoot();
         }
         else
         {
-            bugSprayVFX.Stop();
-        }
-    }
-    void fireWatering()
-    {
-        if (Input.GetButton("Fire1"))
-        {
-            wateringVFX.Play();
-        }
-        else
-        {
-            wateringVFX.Stop();
+            currentVFX.Stop();
         }
     }
 
@@ -95,8 +81,6 @@ public class PlantingGroundController : MonoBehaviour
     // Use Q and R to plant and harvest the plants respectively
     void ReticleEffect()
     {
-        bool doIHaveSeeds = inventory.GetSeedCount() > 0;
-        bool doIHaveWater = inventory.GetWaterCount() > 0;
         RaycastHit hit;
         Vector3 reducedReticleSize = new Vector3(.7f, .7f, 1);
         if (Physics.Raycast(transform.position, transform.forward, out hit, 5))
@@ -121,7 +105,7 @@ public class PlantingGroundController : MonoBehaviour
                     audioSource.PlayOneShot(harvestSFX);
                 }
             }
-            else if (hit.collider.CompareTag("FullPlantingGround") && doIHaveWater)
+            else if (hit.collider.CompareTag("FullPlantingGround") && doIHaveWater && WeaponChangeBehavior.selectedWeaponIndex == 1)
             {
                 UpdateReticle(reticleWaterColor, reducedReticleSize, false);
                 if (Input.GetButton("Fire1"))
@@ -175,7 +159,7 @@ public class PlantingGroundController : MonoBehaviour
         float straightZ = transform.forward.z;
 
         //forward
-        ShootHelper(transform.forward);
+        ShootHelper(Camera.main.transform.forward);
 
         // 45 degree from forward
         Vector3 projectileAngle2 = new Vector3(straightX * .707f - straightZ * .707f, 0, straightX * .707f + straightZ * .707f);

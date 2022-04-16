@@ -19,12 +19,20 @@ public class HelpPanelBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.H))
         {
+            if (isGamePaused)
+            {
+                CloseHelpPanel();
+            }
+            else
+            {
+                OpenHelpPanel();
+            }
 
         }
     }
-    void PauseGame()
+    void OpenHelpPanel()
     {
         isGamePaused = true;
         Time.timeScale = 0.0f;
@@ -33,7 +41,7 @@ public class HelpPanelBehavior : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    public void ResumeGame()
+    public void CloseHelpPanel()
     {
         Time.timeScale = 1.0f;
         helpPanel.SetActive(false);

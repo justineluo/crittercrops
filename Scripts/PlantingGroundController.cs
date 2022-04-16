@@ -39,8 +39,16 @@ public class PlantingGroundController : MonoBehaviour
         doIHaveSeeds = inventory.GetSeedCount() > 0;
         doIHaveWater = inventory.GetWaterCount() > 0;
 
+        if (!HelpPanelBehavior.isGamePaused)
+        {
+            ShootProjectile();
+        }
+    }
+
+    void ShootProjectile()
+    {
         // TODO: have different sound for spray and watering
-        if ((Input.GetButtonDown("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 0) 
+        if ((Input.GetButtonDown("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 0)
             || (Input.GetButtonDown("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 1 && doIHaveWater))
         {
             audioSource.PlayOneShot(spraySFX);
@@ -50,14 +58,7 @@ public class PlantingGroundController : MonoBehaviour
         {
             audioSource.Stop();
         }
-
-        ShootProjectile();
-    }
-
-    void ShootProjectile()
-    {
-        bool doIHaveWater = inventory.GetWaterCount() > 0;
-        if ((Input.GetButton("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 0) 
+        if ((Input.GetButton("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 0)
             || (Input.GetButton("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 1 && doIHaveWater))
         {
             currentVFX.Play();

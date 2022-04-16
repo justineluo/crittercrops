@@ -15,7 +15,7 @@ public class WeaponChangeBehavior : MonoBehaviour
     void Awake() {
         PlantingGroundController.currentVFX = weaponVFX[selectedWeaponIndex];
     }
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,10 +28,12 @@ public class WeaponChangeBehavior : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown("1")) {
+            weaponVFX[selectedWeaponIndex].Stop();
             selectedWeaponIndex = 0;
         }
 
         if (Input.GetKeyDown("2")) {
+            weaponVFX[selectedWeaponIndex].Stop();
             selectedWeaponIndex = 1;
         }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CritterCropBaseBehavior : MonoBehaviour
 {
@@ -22,7 +23,12 @@ public class CritterCropBaseBehavior : MonoBehaviour
     float elapsedTime = 0f;
 
     bool isNewSighting = true;
+    public Slider healthSlider;
     // Start is called before the first frame update
+    void Awake()
+    {
+        healthSlider = GetComponentInChildren<Slider>();
+    }
     void Start()
     {
         if (player == null)
@@ -30,8 +36,9 @@ public class CritterCropBaseBehavior : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player").transform;
         }
         rb = gameObject.GetComponent<Rigidbody>();
-        currentHealth = startingHealth;
         audioSource = GetComponent<AudioSource>();
+        currentHealth = startingHealth;
+        healthSlider.value = currentHealth;
     }
 
     // Update is called once per frame
@@ -74,8 +81,8 @@ public class CritterCropBaseBehavior : MonoBehaviour
         {
             // TODO: do something to damage the player
 
-        // only attacks every 5 seconds
-        if(elapsedTime >= attackRate)
+            // only attacks every 5 seconds
+            if (elapsedTime >= attackRate)
             {
                 var playerHealth = other.gameObject.GetComponent<PlayerHealth>();
                 playerHealth.TakeDamage(damageAmount);
@@ -100,6 +107,7 @@ public class CritterCropBaseBehavior : MonoBehaviour
         if (currentHealth > 0)
         {
             currentHealth -= bugSprayDamage;
+            healthSlider.value = currentHealth;
         }
         if (currentHealth <= 0)
         {

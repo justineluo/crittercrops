@@ -57,7 +57,6 @@ public class DialogManager : MonoBehaviour
     void EndDialog()
     {
         CancelInvoke();
-        Debug.Log("end of sentences");
         dialogCanvas.SetActive(false);
 
     }

@@ -9,7 +9,7 @@ public class DialogManager : MonoBehaviour
     // Start is called before the first frame update
     public Text nameText;
     public Text dialogText;
-    public GameObject dialogCanvas; 
+    public GameObject dialogCanvas;
 
     void Awake()
     {
@@ -27,6 +27,7 @@ public class DialogManager : MonoBehaviour
         sentences.Enqueue("Then you can try planting in this farm land here by pressing q.");
         sentences.Enqueue("Once the plant's ready, press r to harvest it.");
         sentences.Enqueue("To run, press Shift.");
+        sentences.Enqueue("If you forget anything, press h for help or come talk to me again!");
         sentences.Enqueue("Good luck!");
     }
 
@@ -34,7 +35,7 @@ public class DialogManager : MonoBehaviour
     {
         nameText.text = npcName;
         // auto plays dialog
-        InvokeRepeating("DisplayNextSentence" , 1f, 4f);
+        InvokeRepeating("DisplayNextSentence", 1f, 4f);
     }
 
     public void DisplayNextSentence()
@@ -43,11 +44,13 @@ public class DialogManager : MonoBehaviour
         {
             EndDialog();
             return;
-        } else {
+        }
+        else
+        {
             string sentence = sentences.Dequeue();
             dialogText.text = sentence;
         }
-     
+
     }
 
     void EndDialog()
@@ -57,5 +60,5 @@ public class DialogManager : MonoBehaviour
         dialogCanvas.SetActive(false);
 
     }
-  
+
 }

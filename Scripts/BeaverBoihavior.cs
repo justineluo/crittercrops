@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class VillagerBehavior : MonoBehaviour
+public class BeaverBoihavior : MonoBehaviour
 {
     // Start is called before the first frame update
-    public string NPCname = "Villager";
+    public string NPCname = "Beaver Boi";
     public GameObject player;
     public GameObject dialogCanvas; 
 
@@ -23,7 +23,7 @@ public class VillagerBehavior : MonoBehaviour
     float distanceToPlayer;
     Vector3 nextDestination;
     int currentDestinationIndex = 0;
-
+    Animator anim;
 
 
     void Start()
@@ -33,7 +33,7 @@ public class VillagerBehavior : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         currentState = FSMStates.Stroll;
         nextDestination = wanderPoints[0].transform.position;
-    
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -64,6 +64,7 @@ public class VillagerBehavior : MonoBehaviour
 
     void UpdateStrollState()
     {
+        anim.SetInteger("animState", 1);
 
         agent.speed = 3f;
 
@@ -80,7 +81,9 @@ public class VillagerBehavior : MonoBehaviour
     }
 
     void UpdateConverseState()
-    { 
+    {
+        anim.SetInteger("animState", 0);
+
         if (!startedConvo) 
         {
             FindObjectOfType<DialogManager>().StartDialog(NPCname);

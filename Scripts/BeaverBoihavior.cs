@@ -50,13 +50,15 @@ public class BeaverBoihavior : MonoBehaviour
                 break;
            
         }
-       if (distanceToPlayer <= 10)
+       if (distanceToPlayer <= 5)
        {
             agent.speed = 0f;
             currentState = FSMStates.Converse;
-       } else {
+       } 
+        
+       else 
+       {
             currentState = FSMStates.Stroll;
-
        }
      
     }
@@ -65,6 +67,8 @@ public class BeaverBoihavior : MonoBehaviour
     void UpdateStrollState()
     {
         anim.SetInteger("animState", 1);
+
+        
 
         agent.speed = 3f;
 
@@ -86,16 +90,18 @@ public class BeaverBoihavior : MonoBehaviour
 
         if (!startedConvo) 
         {
+            Debug.Log("Conversation");
             FindObjectOfType<DialogManager>().StartDialog(NPCname);
-            dialogCanvas.SetActive(true);
             startedConvo = true;
         }
      
     
         FaceTarget(player.transform.position);
 
-        if(distanceToPlayer > 10) 
+        if(distanceToPlayer > 5) 
         {
+            dialogCanvas.SetActive(false);
+            startedConvo = false;
             currentState = FSMStates.Stroll;
         }
 

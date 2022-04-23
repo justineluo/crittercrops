@@ -13,6 +13,11 @@ public class DialogManager : MonoBehaviour
 
     void Awake()
     {
+        AddDialogue();
+    }
+
+    public void AddDialogue()
+    {
         sentences.Clear();
         sentences = new Queue<string>();
         sentences.Enqueue("Hello youngster! I see you finally woke up...");
@@ -34,9 +39,10 @@ public class DialogManager : MonoBehaviour
 
     public void StartDialog(string npcName)
     {
+        AddDialogue();
         nameText.text = npcName;
-        // auto plays dialog
-        InvokeRepeating("DisplayNextSentence", 1f, 4f);
+        dialogCanvas.SetActive(true);
+        InvokeRepeating("DisplayNextSentence", 0f, 4f);
     }
 
     public void DisplayNextSentence()
@@ -50,6 +56,13 @@ public class DialogManager : MonoBehaviour
         {
             string sentence = sentences.Dequeue();
             dialogText.text = sentence;
+
+            // trying to skip through
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Debug.Log("skip");
+                DisplayNextSentence();
+            }
         }
 
     }
@@ -58,7 +71,6 @@ public class DialogManager : MonoBehaviour
     {
         CancelInvoke();
         dialogCanvas.SetActive(false);
-
     }
 
 }

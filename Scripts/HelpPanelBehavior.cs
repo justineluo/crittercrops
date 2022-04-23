@@ -6,6 +6,7 @@ public class HelpPanelBehavior : MonoBehaviour
 {
     public GameObject helpPanel;
     static public bool isGamePaused;
+    public GameObject recticle;
 
     // Start is called before the first frame update
     void Start()
@@ -13,6 +14,11 @@ public class HelpPanelBehavior : MonoBehaviour
         if (helpPanel == null)
         {
             helpPanel = GameObject.FindGameObjectWithTag("HelpPanel");
+        }
+
+        if (recticle == null)
+        {
+            recticle = GameObject.FindGameObjectWithTag("Crosshair");
         }
     }
 
@@ -37,7 +43,9 @@ public class HelpPanelBehavior : MonoBehaviour
         isGamePaused = true;
         Time.timeScale = 0.0f;
         helpPanel.SetActive(true);
+        recticle.SetActive(false);
         Cursor.visible = false;
+
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -45,8 +53,9 @@ public class HelpPanelBehavior : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         helpPanel.SetActive(false);
+        recticle.SetActive(true);
         isGamePaused = false;
-        Cursor.visible = true;
+        Cursor.visible = false;
         Cursor.lockState = CursorLockMode.None;
     }
 }

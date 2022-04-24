@@ -31,6 +31,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (LevelManager.isGameOver)
+        {
+            moveSpeed = 0;
+        }
+
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
@@ -77,6 +83,13 @@ public class PlayerController : MonoBehaviour
         _controller.Move(moveDirection * Time.deltaTime);
 
         PlayWalkAudio();
+
+        if (transform.position.y < 1)
+        {
+
+            FindObjectOfType<LevelManager>().LevelLost();
+        }
+
     }
 
     void PlayWalkAudio()

@@ -21,7 +21,13 @@ public class DisplayInventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (LevelManager.isGameOver)
+        {
+            inventory.Container.Clear();
+        }    
+
         UpdateDisplay();
+
     }
 
     public void CreateDisplay()
@@ -59,27 +65,9 @@ public class DisplayInventory : MonoBehaviour
             }
         }
     }
-    /*
-    public void RemoveItem(ItemObject item)
+    
+    void OnApplicationQuit()
     {
-        //If you already know what the index of the item is, skip this part
-        int index = -1;
-        for (int i = 0; i < inventory.Container.Count; i++)
-        {
-            if (inventory.Container[i].item == item)
-            {
-                index = i;
-                break;
-            }
-        }
-
-        if (index == -1)
-        {
-            Debug.Log("Item not found in inventory");
-            return;
-        }
-        
-       item = inventory.Container[index].item; //If you don't already have the item reference (this example script does) then grab it now
-       inventory.Container[index] = null; //Remove item from inventory
-    }*/
+        inventory.Container.Clear();
+    }
 }

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class WeaponChangeBehavior : MonoBehaviour
 {
     public ParticleSystem[] weaponVFX;
+    public AudioClip[] weaponSFX;
     public GameObject[] weapons;
     public GameObject weaponUI;
     public static int selectedWeaponIndex = 0;
@@ -14,6 +15,7 @@ public class WeaponChangeBehavior : MonoBehaviour
 
     void Awake() {
         PlantingGroundController.currentVFX = weaponVFX[selectedWeaponIndex];
+        PlantingGroundController.currentSFX = weaponSFX[selectedWeaponIndex];
     }
 
     // Start is called before the first frame update
@@ -37,15 +39,18 @@ public class WeaponChangeBehavior : MonoBehaviour
             selectedWeaponIndex = 1;
         }
 
-        var currentVFX = weaponVFX[selectedWeaponIndex];
-        PlantingGroundController.currentVFX = currentVFX;
-
         if (previousWeaponIndex != selectedWeaponIndex) {
             previousWeaponIndex = selectedWeaponIndex;
             weaponVFX[previousWeaponIndex].Stop();
             UpdateWeaponUI();
             UpdateWeapon();
+            UpdatePlantingGround();
         }
+    }
+
+    void UpdatePlantingGround() {
+        PlantingGroundController.currentVFX = weaponVFX[selectedWeaponIndex];
+        PlantingGroundController.currentSFX = weaponSFX[selectedWeaponIndex];
     }
 
     void UpdateWeapon() {

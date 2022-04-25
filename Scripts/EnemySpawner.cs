@@ -8,7 +8,8 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab1;
     public GameObject enemyPrefab2;
     public float xMin = -6;
-    public float xMax = 6;    
+    public float xMax = 6;
+    public float y = 0.5f;
     public float zMin = -6;
     public float zMax = 6;
     public int maxEnemies = 10; // max number of enemies in region at a time
@@ -22,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
     {
 
         enemiesInScene = GameObject.FindGameObjectsWithTag("Enemy");
-        if(enemiesInScene.Length < maxEnemies)
+        if (enemiesInScene.Length < maxEnemies)
         {
             SpawnEnemies();
         }
@@ -31,31 +32,34 @@ public class EnemySpawner : MonoBehaviour
 
     }
     void SpawnEnemies()
-    {  
-        if(elapsedTime >= spawnRate)
+    {
+        if (elapsedTime >= spawnRate)
+        {
+            elapsedTime = 0.0f;
+            Vector3 enemyPosition = transform.position;
+            enemyPosition.x += Random.Range(xMin, xMax);
+
+            enemyPosition.y = 0.5f;
+            enemyPosition.z += transform.position.x + Random.Range(zMin, zMax);
+
+            int enemyIndex = Random.Range(0, 2);
+            GameObject enemyPrefab;
+            if (enemyIndex == 0)
             {
-                elapsedTime = 0.0f;
-                Vector3 enemyPosition = transform.position;
-                enemyPosition.x += Random.Range(xMin, xMax);
+                enemyPrefab = enemyPrefab1;
+            }
+            else
+            {
+                enemyPrefab = enemyPrefab2;
+            }
 
-                enemyPosition.y = 0.5f;
-                enemyPosition.z += transform.position.x + Random.Range(zMin, zMax);
+            GameObject spawnedEnemy = Instantiate(enemyPrefab, enemyPosition, transform.rotation)
+                as GameObject;
 
-                int enemyIndex = Random.Range(0, 2);
-                GameObject enemyPrefab;
-                if (enemyIndex == 0) {
-                    enemyPrefab = enemyPrefab1;
-                } else {
-                    enemyPrefab = enemyPrefab2;
-                } 
-            
-                GameObject spawnedEnemy = Instantiate(enemyPrefab, enemyPosition, transform.rotation)
-                    as GameObject;
-                
-                spawnedEnemy.transform.parent = gameObject.transform;
-        
-        } 
-       
+            spawnedEnemy.transform.parent = gameObject.transform;
+
+        }
+
     }
-    
+
 }

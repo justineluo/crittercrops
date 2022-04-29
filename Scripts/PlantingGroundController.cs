@@ -34,6 +34,10 @@ public class PlantingGroundController : MonoBehaviour
     bool doIHaveWater;
     public static SeedObject currentSeed;
 
+    Coroutine cooldownCoroutine;
+    public Slider cooldownSlider;
+    public float cooldownTime = 2;
+
     void Awake()
     {
         promptCanvas = GameObject.FindGameObjectWithTag("Prompt");
@@ -43,6 +47,10 @@ public class PlantingGroundController : MonoBehaviour
     {
         originalReticleColor = reticleImage.color;
         audioSource = GetComponent<AudioSource>();
+        if (cooldownSlider != null)
+        {
+            cooldownSlider.maxValue = cooldownTime;
+        }
     }
     // Update is called once per frame
     void Update()
@@ -62,6 +70,8 @@ public class PlantingGroundController : MonoBehaviour
             || (Input.GetButtonDown("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 1 && doIHaveWater))
         {
             audioSource.PlayOneShot(currentSFX);
+            currentVFX.Play();
+            cooldownCoroutine = StartCoroutine(WeaponCooldown(cooldownTime));
         }
         else if (Input.GetButtonDown("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 1 && !doIHaveWater)
         {
@@ -72,22 +82,36 @@ public class PlantingGroundController : MonoBehaviour
         if (Input.GetButtonUp("Fire1"))
         {
             audioSource.Stop();
-        }
-        if ((Input.GetButton("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 0)
-            || (Input.GetButton("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 1 && doIHaveWater))
-        {
-            currentVFX.Play();
-            Shoot();
-        }
-        else
-        {
             currentVFX.Stop();
+            if (cooldownCoroutine != null)
+            {
+                StopCoroutine(cooldownCoroutine);
+            }
+            if (cooldownSlider != null)
+            {
+                cooldownSlider.value = cooldownTime;
+            }
         }
     }
 
     void DeactivatePromptWithDelay()
     {
         promptCanvas.SetActive(false);
+    }
+
+    IEnumerator WeaponCooldown(float countdown)
+    {
+        while (countdown > 0)
+        {
+            countdown -= Time.deltaTime;
+            if (cooldownSlider != null)
+            {
+                cooldownSlider.value = countdown;
+            }
+            yield return null;
+        }
+        audioSource.Stop();
+        currentVFX.Stop();
     }
 
     void FixedUpdate()
@@ -186,38 +210,5 @@ public class PlantingGroundController : MonoBehaviour
         plant.GetComponent<PlantGrowthBehavior>().WaterPlantOnce(waterInventory);
         GameObject dirt = plantingGround.transform.CompareTag("Plant") ? plantingGround.collider.transform.parent.gameObject : plantingGround.collider.gameObject;
         dirt.GetComponent<MeshRenderer>().material = wetGroundMaterial;
-    }
-
-    void Shoot()
-    {
-        float straightX = transform.forward.x;
-        float straightZ = transform.forward.z;
-
-        //forward
-        ShootHelper(Camera.main.transform.forward);
-
-        // 45 degree from forward
-        Vector3 projectileAngle2 = new Vector3(straightX * .707f - straightZ * .707f, 0, straightX * .707f + straightZ * .707f);
-        ShootHelper(projectileAngle2);
-
-        // 22.5 degree from forward
-        Vector3 projectileAngle3 = new Vector3(straightX * .92f - straightZ * .38f, 0, straightX * .38f + straightZ * .92f);
-        ShootHelper(projectileAngle3);
-
-        // -45 degree from forward
-        Vector3 projectileAngle4 = new Vector3(straightX * .707f + straightZ * .707f, 0, straightX * -.707f + straightZ * .707f);
-        ShootHelper(projectileAngle4);
-
-        // -22.5 degree from forward
-        Vector3 projectileAngle5 = new Vector3(straightX * .92f + straightZ * .38f, 0, straightX * -.38f + straightZ * .92f);
-        ShootHelper(projectileAngle5);
-    }
-
-    private void ShootHelper(Vector3 projectileAngle)
-    {
-        GameObject particles = GameObject.FindGameObjectWithTag("ParticleSystem");
-        GameObject projectile = Instantiate(projectilePrefab, particles.transform.position + transform.forward, transform.rotation);
-        Rigidbody _rb = projectile.GetComponent<Rigidbody>();
-        _rb.AddForce(projectileAngle * projectileSpeed, ForceMode.VelocityChange);
     }
 }

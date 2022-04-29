@@ -30,13 +30,9 @@ public class PlantGrowthBehavior : MonoBehaviour
             float stage = Mathf.Ceil(growth * numOfStages);
             transform.localScale = (startVectorScale * stage * scale);
 
-            print(stage);
-
             if (stage == numOfStages)
             {
                 transform.parent.gameObject.tag = "FullGrownPlantingGround";
-
-                print(stage);
             }
         }
 

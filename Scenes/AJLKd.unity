@@ -15513,6 +15513,7 @@ MonoBehaviour:
   NPCname: Beaver Boi
   player: {fileID: 767058868}
   dialogCanvas: {fileID: 2072845483}
+  reticle: {fileID: 1708630759}
 --- !u!195 &1224040547
 NavMeshAgent:
   m_ObjectHideFlags: 0

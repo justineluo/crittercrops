@@ -10,6 +10,7 @@ public class DialogManager : MonoBehaviour
     public Text nameText;
     public Text dialogText;
     public GameObject dialogCanvas;
+    public static bool isDialogue;
 
     void Awake()
     {
@@ -40,9 +41,12 @@ public class DialogManager : MonoBehaviour
     public void StartDialog(string npcName)
     {
         AddDialogue();
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         nameText.text = npcName;
         dialogCanvas.SetActive(true);
-        InvokeRepeating("DisplayNextSentence", 0f, 4f);
+        //InvokeRepeating("DisplayNextSentence", 0f, 4f);
+        DisplayNextSentence();
     }
 
     public void DisplayNextSentence()
@@ -56,13 +60,6 @@ public class DialogManager : MonoBehaviour
         {
             string sentence = sentences.Dequeue();
             dialogText.text = sentence;
-
-            // trying to skip through
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                Debug.Log("skip");
-                DisplayNextSentence();
-            }
         }
 
     }
@@ -71,6 +68,8 @@ public class DialogManager : MonoBehaviour
     {
         CancelInvoke();
         dialogCanvas.SetActive(false);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
 }

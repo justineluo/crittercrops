@@ -17388,7 +17388,7 @@ MonoBehaviour:
     q: Plant
     seeds
 
-    r: Harvest crops
+    3: Switch to shovel to harvest crops
 
     h: Help menu
 

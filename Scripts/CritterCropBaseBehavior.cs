@@ -134,7 +134,7 @@ public class CritterCropBaseBehavior : MonoBehaviour
             Vector3 effectPosition = transform.position;
             effectPosition.y = transform.position.y + 1;
             Instantiate(critterDieVFX, effectPosition, transform.rotation);
-            Instantiate(seedPrefab, transform.position - new Vector3(0, .5f * transform.localScale.y + .1f, 0), transform.rotation);
+            Instantiate(seedPrefab, transform.position - new Vector3(0, .6f * transform.localScale.y - .35f, 0), transform.rotation);
 
         }
     }

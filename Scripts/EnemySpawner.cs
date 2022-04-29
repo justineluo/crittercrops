@@ -37,6 +37,7 @@ public class EnemySpawner : MonoBehaviour
         {
             elapsedTime = 0.0f;
             Vector3 enemyPosition = transform.position;
+            enemyPosition.y = y;
             enemyPosition.x += Random.Range(xMin, xMax);
 
             // enemyPosition.y = 0.5f;

@@ -13,6 +13,7 @@ MonoImporter:
   - audioSource: {instanceID: 0}
   - plantSFX: {instanceID: 0}
   - harvestSFX: {instanceID: 0}
+  - promptCanvas: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

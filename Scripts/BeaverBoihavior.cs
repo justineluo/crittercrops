@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class BeaverBoihavior : MonoBehaviour
     // Start is called before the first frame update
     public string NPCname = "Beaver Boi";
     public GameObject player;
-    public GameObject dialogCanvas; 
+    public GameObject dialogCanvas;
 
     public static bool startedConvo = false;
     GameObject[] wanderPoints;
@@ -16,7 +17,7 @@ public class BeaverBoihavior : MonoBehaviour
 
     enum FSMStates
     {
-        Converse, 
+        Converse,
         Stroll
     }
     FSMStates currentState;
@@ -40,7 +41,7 @@ public class BeaverBoihavior : MonoBehaviour
     void Update()
     {
         distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-        switch(currentState)
+        switch (currentState)
         {
             case FSMStates.Stroll:
                 UpdateStrollState();
@@ -48,19 +49,19 @@ public class BeaverBoihavior : MonoBehaviour
             case FSMStates.Converse:
                 UpdateConverseState();
                 break;
-           
+
         }
-       if (distanceToPlayer <= 5)
-       {
+        if (distanceToPlayer <= 5)
+        {
             agent.speed = 0f;
             currentState = FSMStates.Converse;
-       } 
-        
-       else 
-       {
+        }
+
+        else
+        {
             currentState = FSMStates.Stroll;
-       }
-     
+        }
+
     }
 
 
@@ -70,41 +71,41 @@ public class BeaverBoihavior : MonoBehaviour
 
         agent.speed = 3f;
 
-        if(Vector3.Distance(transform.position, nextDestination) <= 2)
+        if (Vector3.Distance(transform.position, nextDestination) <= 2)
         {
             nextDestination = wanderPoints[currentDestinationIndex].transform.position;
-            currentDestinationIndex = (currentDestinationIndex + 1 ) % wanderPoints.Length;
+            currentDestinationIndex = (currentDestinationIndex + 1) % wanderPoints.Length;
         }
 
         FaceTarget(nextDestination);
 
         agent.SetDestination(nextDestination);
-       
+
     }
 
     void UpdateConverseState()
     {
         anim.SetInteger("animState", 0);
 
-        if (!startedConvo) 
+        if (!startedConvo)
         {
             FindObjectOfType<DialogManager>().StartDialog(NPCname);
             startedConvo = true;
         }
-     
-    
+
+
         FaceTarget(player.transform.position);
 
-        if(distanceToPlayer > 5) 
+        if (distanceToPlayer > 5)
         {
             dialogCanvas.SetActive(false);
             startedConvo = false;
             currentState = FSMStates.Stroll;
         }
 
-       
+
     }
- 
+
     void FaceTarget(Vector3 target)
     {
         Vector3 directionToTarget = (target - transform.position).normalized;

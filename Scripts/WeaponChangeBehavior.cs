@@ -22,7 +22,7 @@ public class WeaponChangeBehavior : MonoBehaviour
     void Start()
     {
         buttons = weaponUI.GetComponentsInChildren<Button>();
-        weapons[selectedWeaponIndex].SetActive(true);
+        UpdateWeapon();
         UpdateWeaponUI();
     }
 
@@ -71,7 +71,7 @@ public class WeaponChangeBehavior : MonoBehaviour
 
         foreach(Button selectedButton in buttons) {
             if (i == selectedWeaponIndex) {
-                selectedButton.transform.localScale *= 1.25f;
+                selectedButton.transform.localScale *= 1.15f;
             } else {
                 selectedButton.transform.localScale = new Vector3(1, 1, 1);
             }

@@ -11,7 +11,7 @@ public class WeaponChangeBehavior : MonoBehaviour
     public GameObject weaponUI;
     public static int selectedWeaponIndex = 0;
     private Button[] buttons;
-    private int previousWeaponIndex;
+    private int previousWeaponIndex = 0;
 
     void Awake()
     {
@@ -41,27 +41,10 @@ public class WeaponChangeBehavior : MonoBehaviour
             weaponVFX[selectedWeaponIndex].Stop();
             selectedWeaponIndex = 1;
         }
-        if(Input.GetAxis("Mouse ScrollWheel") < 0)
+        if (Input.GetKeyDown("3"))
         {
-            // scroll down
-            if(selectedWeaponIndex >= weaponVFX.Length -1)
-            {
-                selectedWeaponIndex = 0;
-            } else {
-                
-                selectedWeaponIndex++;
-            }
-        }
-        if(Input.GetAxis("Mouse ScrollWheel") > 0)
-        {
-            // scroll up
-            if(selectedWeaponIndex <= 0)
-            {
-                selectedWeaponIndex = weaponVFX.Length - 1;
-            } else {
-                
-                selectedWeaponIndex--;
-            }
+            weaponVFX[selectedWeaponIndex].Stop();
+            selectedWeaponIndex = 2;
         }
         if (previousWeaponIndex != selectedWeaponIndex)
         {

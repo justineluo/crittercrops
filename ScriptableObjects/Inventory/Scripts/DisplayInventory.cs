@@ -77,15 +77,19 @@ public class DisplayInventory : MonoBehaviour
 
         }
 
-
-        // var currentSeed = spellPrefabs[selectedSpellIndex];
-        // PlantingGroundController.currentSeed = currentSeed;
+        if (inventory.Container.Count != 0)
+        {
+            var currentSeed = inventory.Container[selectedItem].item;
+            if (currentSeed.type == ItemType.Seed)
+            {
+                PlantingGroundController.currentSeed = (SeedObject)currentSeed;
+            }
+        }
     }
     public void UpdateDisplay()
     {
         for (int i = 0; i < inventory.Container.Count; i++)
         {
-            Debug.Log(inventory.Container[i].item);
             if (itemsDisplayed.ContainsKey(inventory.Container[i]))
             {
                 itemsDisplayed[inventory.Container[i]].GetComponentInChildren<Text>().text = inventory.Container[i].amount.ToString();

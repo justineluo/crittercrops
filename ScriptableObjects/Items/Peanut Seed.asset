@@ -15,3 +15,4 @@ MonoBehaviour:
   prefab: {fileID: 6085415978104717763, guid: c80171ae428463c46afa8be9e3add395, type: 3}
   type: 0
   description: peanut seed
+  plantPrefab: {fileID: 8095559183055601566, guid: 104f34d67ff0c464487da650eb1de3dc, type: 3}

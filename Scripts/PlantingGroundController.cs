@@ -11,7 +11,7 @@ public class PlantingGroundController : MonoBehaviour
     public Color reticleWaterColor;
     Color originalReticleColor;
     public float reticleChangeSpeed = 2f;
-    public GameObject plantPrefab;
+    // public GameObject plantPrefab;
     public static int moneyCount = 0;
     public InventoryObject inventory;
     public InventoryObject waterInventory;
@@ -32,7 +32,7 @@ public class PlantingGroundController : MonoBehaviour
 
     bool doIHaveCurrentSeeds;
     bool doIHaveWater;
-    public SeedObject currentSeed;
+    public static SeedObject currentSeed;
 
     void Awake()
     {
@@ -47,7 +47,7 @@ public class PlantingGroundController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        doIHaveCurrentSeeds = inventory.GetSeedCount(currentSeed.description) > 0;
+        doIHaveCurrentSeeds = currentSeed == null ? false : inventory.GetSeedCount(currentSeed.description) > 0;
         doIHaveWater = waterInventory.GetWaterCount() > 0;
 
         if (!HelpPanelBehavior.isGamePaused)
@@ -106,18 +106,18 @@ public class PlantingGroundController : MonoBehaviour
         Vector3 reducedReticleSize = new Vector3(.7f, .7f, 1);
         if (Physics.Raycast(transform.position, transform.forward, out hit, 5))
         {
-
-            if (hit.collider.CompareTag("EmptyPlantingGround") && doIHaveCurrentSeeds)
+            if (CheckTag(hit, "EmptyPlantingGround") && doIHaveCurrentSeeds)
             {
                 UpdateReticle(reticlePlantingColor, reducedReticleSize, false);
                 if (Input.GetKeyDown(KeyCode.Q))
                 {
-                    inventory.RemoveAnyOneSeedItem();
+
+                    inventory.RemoveOneDescpItem(currentSeed.description);
                     PlantCrop(hit);
                     audioSource.PlayOneShot(plantSFX);
                 }
             }
-            else if (hit.collider.CompareTag("FullGrownPlantingGround"))
+            else if (CheckTag(hit, "FullGrownPlantingGround"))
             {
                 UpdateReticle(reticleHarvestingColor, reducedReticleSize, true);
                 if (Input.GetKeyDown(KeyCode.R))
@@ -126,7 +126,7 @@ public class PlantingGroundController : MonoBehaviour
                     audioSource.PlayOneShot(harvestSFX);
                 }
             }
-            else if (hit.collider.CompareTag("FullPlantingGround") && doIHaveWater && WeaponChangeBehavior.selectedWeaponIndex == 1)
+            else if (CheckTag(hit, "FullPlantingGround") && doIHaveWater && WeaponChangeBehavior.selectedWeaponIndex == 1)
             {
                 UpdateReticle(reticleWaterColor, reducedReticleSize, false);
                 if (Input.GetButton("Fire1"))
@@ -139,6 +139,12 @@ public class PlantingGroundController : MonoBehaviour
                 UpdateReticle(originalReticleColor, Vector3.one, false);
             }
         }
+    }
+
+    bool CheckTag(RaycastHit hit, string tag)
+    {
+
+        return hit.collider.CompareTag(tag) || (hit.collider.gameObject.transform.parent && hit.collider.gameObject.transform.parent.CompareTag(tag));
     }
 
     // Sets the reticle color and size from what it currently is to the given color and size
@@ -154,26 +160,32 @@ public class PlantingGroundController : MonoBehaviour
     // Handles the action of harvesting a plant and any dependencies or effetcs  that come with it
     void HarvestPlant(RaycastHit plantingGround)
     {
-        int plantValue = plantingGround.transform.GetChild(0).gameObject.GetComponent<PlantGrowthBehavior>().moniesAmount;
+        GameObject plant = plantingGround.transform.CompareTag("Plant") ? plantingGround.collider.gameObject : plantingGround.transform.GetChild(0).gameObject;
+        int plantValue = plant.GetComponent<PlantGrowthBehavior>().moniesAmount;
         FindObjectOfType<LevelManager>().addToCurrentMoney(plantValue);
-        Destroy(plantingGround.transform.GetChild(0).gameObject);
-        plantingGround.collider.gameObject.GetComponent<MeshRenderer>().material = dryGroundMaterial;
-        plantingGround.collider.tag = "EmptyPlantingGround";
+
+        Destroy(plant.gameObject);
+        GameObject dirt = plantingGround.transform.CompareTag("Plant") ? plantingGround.collider.transform.parent.gameObject : plantingGround.collider.gameObject;
+        dirt.GetComponent<MeshRenderer>().material = dryGroundMaterial;
+        dirt.tag = "EmptyPlantingGround";
         // maybe add some cute effect and sound when you harvest
     }
     // Handles the action of planting a crop and any dependencies or effects that come with it
 
     void PlantCrop(RaycastHit plantingGround)
     {
-        var plantObject = Instantiate(plantPrefab, plantingGround.transform.position, plantingGround.transform.rotation);
+        var plantObject = Instantiate(currentSeed.plantPrefab, plantingGround.transform.position, plantingGround.transform.rotation);
         plantObject.transform.parent = plantingGround.transform;
         plantingGround.collider.tag = "FullPlantingGround";
         // maybe add some cute effect and sound when you plant something
     }
     void WaterCrop(RaycastHit plantingGround)
     {
-        plantingGround.transform.GetChild(0).gameObject.GetComponent<PlantGrowthBehavior>().WaterPlantOnce(waterInventory);
-        plantingGround.collider.gameObject.GetComponent<MeshRenderer>().material = wetGroundMaterial;
+        GameObject plant = plantingGround.transform.CompareTag("Plant") ? plantingGround.collider.gameObject : plantingGround.transform.GetChild(0).gameObject;
+
+        plant.GetComponent<PlantGrowthBehavior>().WaterPlantOnce(waterInventory);
+        GameObject dirt = plantingGround.transform.CompareTag("Plant") ? plantingGround.collider.transform.parent.gameObject : plantingGround.collider.gameObject;
+        dirt.GetComponent<MeshRenderer>().material = wetGroundMaterial;
     }
 
     void Shoot()

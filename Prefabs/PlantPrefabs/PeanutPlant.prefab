@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 9199950534910252171}
   m_Layer: 0
   m_Name: PeanutPlant
-  m_TagString: Untagged
+  m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ad43c01c1aca14abab797846361124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startScale: 1
+  startVectorScale: {x: 0, y: 0, z: 0}
   numOfStages: 4
   lerpDuration: 20
   moniesAmount: 10

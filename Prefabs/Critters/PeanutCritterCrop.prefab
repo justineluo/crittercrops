@@ -180,7 +180,7 @@ MonoBehaviour:
   damageAmount: 10
   seedPrefab: {fileID: 525565594462708004, guid: 1c4b87aed072a1e48a8e6147d8f8debd, type: 3}
   bugSprayDamage: 1
-  startingHealth: 300
+  startingHealth: 250
   audioSource: {fileID: 0}
   critterDieSFX: {fileID: 8300000, guid: c366ec46d688b654499f2f7af692556e, type: 3}
   critterDieVFX: {fileID: 4095616659207562207, guid: fd6511e8d14174f2abc532bb86a62727, type: 3}

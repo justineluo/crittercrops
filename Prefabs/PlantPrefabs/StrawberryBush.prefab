@@ -534,7 +534,7 @@ MonoBehaviour:
   startVectorScale: {x: 0, y: 0, z: 0}
   numOfStages: 4
   lerpDuration: 20
-  moniesAmount: 15
+  moniesAmount: 10
 --- !u!136 &1111119238073658919
 CapsuleCollider:
   m_ObjectHideFlags: 0

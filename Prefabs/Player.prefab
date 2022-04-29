@@ -2144,6 +2144,7 @@ MonoBehaviour:
   jumpHeight: 2
   airControl: 10
   inventory: {fileID: 11400000, guid: a861ac48b49822243a1f84e3b6932886, type: 2}
+  waterInventory: {fileID: 11400000, guid: 23bf35c56d6ddd0418832bed57cfe879, type: 2}
   jumpSFX: {fileID: 8300000, guid: 2c5292ba5cf254919a6b9e2b18e04f49, type: 3}
   walkSFX: {fileID: 8300000, guid: b5635023615e997428fae736cb5a737b, type: 3}
   pickupSFX: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}
@@ -2401,6 +2402,7 @@ MonoBehaviour:
   weaponVFX:
   - {fileID: 232082028694348410}
   - {fileID: 3384967713448780739}
+  weaponSFX: []
   weapons:
   - {fileID: 9169644952384207370}
   - {fileID: 3158169415453158824}
@@ -7996,14 +7998,19 @@ MonoBehaviour:
   reticleHarvestingColor: {r: 0.8490566, g: 0.5131717, b: 0.15619439, a: 0.78039217}
   reticleWaterColor: {r: 0, g: 0.50156784, b: 1, a: 1}
   reticleChangeSpeed: 2
-  plantPrefab: {fileID: 2906742830765859135, guid: 78da2ace1ab76ce478600ebe37fa10fe, type: 3}
   inventory: {fileID: 11400000, guid: a861ac48b49822243a1f84e3b6932886, type: 2}
+  waterInventory: {fileID: 11400000, guid: 23bf35c56d6ddd0418832bed57cfe879, type: 2}
   projectilePrefab: {fileID: 4516599135879785924, guid: d53081be61db8a3469f42dc80a9dc4b2, type: 3}
   projectileSpeed: 9
+  dryGroundMaterial: {fileID: 0}
+  wetGroundMaterial: {fileID: 0}
+  shovelAnimator: {fileID: 0}
   audioSource: {fileID: 0}
   plantSFX: {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
   harvestSFX: {fileID: 8300000, guid: aa362123f30e34b3b930d31dcf469c21, type: 3}
-  spraySFX: {fileID: 8300000, guid: 7d36276fd9ccc854ea5d2ac99af8375b, type: 3}
+  promptCanvas: {fileID: 0}
+  cooldownSlider: {fileID: 0}
+  cooldownTime: 2
 --- !u!82 &523606648
 AudioSource:
   m_ObjectHideFlags: 0

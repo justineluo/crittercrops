@@ -15,3 +15,4 @@ MonoBehaviour:
   prefab: {fileID: 1394828601469701973, guid: b32c122018bbaae4dafb6cfd14bb0fcf, type: 3}
   type: 0
   description: 
+  plantPrefab: {fileID: 8670076238356604504, guid: 0108ae6fda24b9640bc532f6764126c3, type: 3}

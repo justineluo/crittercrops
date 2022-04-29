@@ -23,6 +23,7 @@ public class CritterCropBaseBehavior : MonoBehaviour
     float elapsedTime = 0f;
 
     bool isNewSighting = true;
+    bool critterDead;
     public Slider healthSlider;
     // Start is called before the first frame update
     void Awake()
@@ -38,6 +39,7 @@ public class CritterCropBaseBehavior : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
         currentHealth = startingHealth;
+        healthSlider.maxValue = startingHealth;
         healthSlider.value = currentHealth;
     }
 
@@ -81,8 +83,6 @@ public class CritterCropBaseBehavior : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            // TODO: do something to damage the player
-
             // only attacks every 5 seconds
             if (elapsedTime >= attackRate)
             {
@@ -95,9 +95,8 @@ public class CritterCropBaseBehavior : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Projectile") && WeaponChangeBehavior.selectedWeaponIndex == 0)
+    private void OnParticleCollision(GameObject other) {
+        if (WeaponChangeBehavior.selectedWeaponIndex == 0)
         {
             TakeDamage();
         }
@@ -111,7 +110,7 @@ public class CritterCropBaseBehavior : MonoBehaviour
             currentHealth -= bugSprayDamage;
             healthSlider.value = currentHealth;
         }
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !critterDead)
         {
             CritterDies();
         }
@@ -120,6 +119,7 @@ public class CritterCropBaseBehavior : MonoBehaviour
     //call this when the crittercrop runs out of health
     private void CritterDies()
     {
+        critterDead = true;
         audioSource.PlayOneShot(critterDieSFX, 0.2f);
         // Maybe also add a dying animation 
 

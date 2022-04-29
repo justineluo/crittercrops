@@ -11,7 +11,7 @@ public class WeaponChangeBehavior : MonoBehaviour
     public GameObject weaponUI;
     public static int selectedWeaponIndex = 0;
     private Button[] buttons;
-    private int previousWeaponIndex;
+    private int previousWeaponIndex = 0;
 
     void Awake()
     {
@@ -41,7 +41,11 @@ public class WeaponChangeBehavior : MonoBehaviour
             weaponVFX[selectedWeaponIndex].Stop();
             selectedWeaponIndex = 1;
         }
-
+        if (Input.GetKeyDown("3"))
+        {
+            weaponVFX[selectedWeaponIndex].Stop();
+            selectedWeaponIndex = 2;
+        }
         if (previousWeaponIndex != selectedWeaponIndex)
         {
             previousWeaponIndex = selectedWeaponIndex;
@@ -50,6 +54,7 @@ public class WeaponChangeBehavior : MonoBehaviour
             UpdateWeapon();
             UpdatePlantingGround();
         }
+
     }
 
     void UpdatePlantingGround()

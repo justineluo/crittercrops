@@ -2710,7 +2710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b270912e06fcc71499b239dee0cd2bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moneyGoal: 100
+  moneyGoal: 150
   moneyCountText: {fileID: 564285980}
   statusText: {fileID: 880992129}
   winSFX: {fileID: 8300000, guid: 3830029b89ea7a04992156c6adbc327c, type: 3}
@@ -3383,7 +3383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7006f920a8d9a6047ac658a8c7c0198e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab1: {fileID: 3023915127041941180, guid: c238ee81d147ab447a65ccf435bb57f0, type: 3}
+  enemyPrefab1: {fileID: 9175177911149404466, guid: 10045061f1dbe23408d6028d19870d74, type: 3}
   enemyPrefab2: {fileID: 6398573091955486052, guid: 78dfd51c49659034f8cc7c2770ab417a, type: 3}
   xMin: -8
   xMax: 8
@@ -7782,7 +7782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7006f920a8d9a6047ac658a8c7c0198e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab1: {fileID: 3023915127041941180, guid: c238ee81d147ab447a65ccf435bb57f0, type: 3}
+  enemyPrefab1: {fileID: 9175177911149404466, guid: 10045061f1dbe23408d6028d19870d74, type: 3}
   enemyPrefab2: {fileID: 6398573091955486052, guid: 78dfd51c49659034f8cc7c2770ab417a, type: 3}
   xMin: -8
   xMax: 8
@@ -8722,7 +8722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7006f920a8d9a6047ac658a8c7c0198e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab1: {fileID: 3023915127041941180, guid: c238ee81d147ab447a65ccf435bb57f0, type: 3}
+  enemyPrefab1: {fileID: 9175177911149404466, guid: 10045061f1dbe23408d6028d19870d74, type: 3}
   enemyPrefab2: {fileID: 6398573091955486052, guid: 78dfd51c49659034f8cc7c2770ab417a, type: 3}
   xMin: -8
   xMax: 8
@@ -11866,7 +11866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7006f920a8d9a6047ac658a8c7c0198e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab1: {fileID: 3023915127041941180, guid: c238ee81d147ab447a65ccf435bb57f0, type: 3}
+  enemyPrefab1: {fileID: 9175177911149404466, guid: 10045061f1dbe23408d6028d19870d74, type: 3}
   enemyPrefab2: {fileID: 6398573091955486052, guid: 78dfd51c49659034f8cc7c2770ab417a, type: 3}
   xMin: -4
   xMax: 4

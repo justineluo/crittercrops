@@ -15486,6 +15486,7 @@ MonoBehaviour:
   NPCname: Beaver Boi
   player: {fileID: 767058868}
   dialogCanvas: {fileID: 2072845483}
+  reticle: {fileID: 1708630759}
 --- !u!195 &1224040547
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -21119,7 +21120,6 @@ MonoBehaviour:
   nameText: {fileID: 1141142242}
   dialogText: {fileID: 743329512}
   dialogCanvas: {fileID: 2072845483}
-  recticle: {fileID: 1708630759}
 --- !u!1 &1755322943 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1454538212264724, guid: 17a7c916a35ccd742ad5a9f6ea49eefb, type: 3}
@@ -24793,7 +24793,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2072845484
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11512,7 +11512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7006f920a8d9a6047ac658a8c7c0198e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab1: {fileID: 3023915127041941180, guid: c238ee81d147ab447a65ccf435bb57f0, type: 3}
+  enemyPrefab1: {fileID: 2376366577590538390, guid: 245330f6f9f338d48a5b544a1fd5c4df, type: 3}
   enemyPrefab2: {fileID: 6398573091955486052, guid: 78dfd51c49659034f8cc7c2770ab417a, type: 3}
   xMin: -6
   xMax: 6

@@ -74,8 +74,8 @@ public class DialogManager : MonoBehaviour
     void EndDialog()
     {
         CancelInvoke();
-        dialogCanvas.SetActive(false);
         recticle.SetActive(true);
+        dialogCanvas.SetActive(false);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }

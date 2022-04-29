@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class WeaponChangeBehavior : MonoBehaviour
 {
     public ParticleSystem[] weaponVFX;
+    public AudioClip[] weaponSFX;
     public GameObject[] weapons;
     public GameObject weaponUI;
     public static int selectedWeaponIndex = 0;
@@ -14,13 +15,14 @@ public class WeaponChangeBehavior : MonoBehaviour
 
     void Awake() {
         PlantingGroundController.currentVFX = weaponVFX[selectedWeaponIndex];
+        PlantingGroundController.currentSFX = weaponSFX[selectedWeaponIndex];
     }
 
     // Start is called before the first frame update
     void Start()
     {
         buttons = weaponUI.GetComponentsInChildren<Button>();
-        weapons[selectedWeaponIndex].SetActive(true);
+        UpdateWeapon();
         UpdateWeaponUI();
     }
 
@@ -37,15 +39,18 @@ public class WeaponChangeBehavior : MonoBehaviour
             selectedWeaponIndex = 1;
         }
 
-        var currentVFX = weaponVFX[selectedWeaponIndex];
-        PlantingGroundController.currentVFX = currentVFX;
-
         if (previousWeaponIndex != selectedWeaponIndex) {
             previousWeaponIndex = selectedWeaponIndex;
             weaponVFX[previousWeaponIndex].Stop();
             UpdateWeaponUI();
             UpdateWeapon();
+            UpdatePlantingGround();
         }
+    }
+
+    void UpdatePlantingGround() {
+        PlantingGroundController.currentVFX = weaponVFX[selectedWeaponIndex];
+        PlantingGroundController.currentSFX = weaponSFX[selectedWeaponIndex];
     }
 
     void UpdateWeapon() {
@@ -66,7 +71,7 @@ public class WeaponChangeBehavior : MonoBehaviour
 
         foreach(Button selectedButton in buttons) {
             if (i == selectedWeaponIndex) {
-                selectedButton.transform.localScale *= 1.25f;
+                selectedButton.transform.localScale *= 1.15f;
             } else {
                 selectedButton.transform.localScale = new Vector3(1, 1, 1);
             }

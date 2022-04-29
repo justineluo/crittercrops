@@ -5,7 +5,7 @@ using UnityEngine;
 public class WellSpawner : MonoBehaviour
 {
     public GameObject wellPrefab;
-    public float spawnRate = 20f;
+    public float spawnRate = 10f;
     public float spawnX = 0;
     public float spawnY = 0;
     public float spawnZ = 25.8f;

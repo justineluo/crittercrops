@@ -15,19 +15,27 @@ public class PlantingGroundController : MonoBehaviour
     public static int moneyCount = 0;
     public InventoryObject inventory;
     public static ParticleSystem currentVFX;
+    public static AudioClip currentSFX;
     bool isWatering;
     public GameObject projectilePrefab;
     public float projectileSpeed = 9f;
+    public Material dryGroundMaterial;
+    public Material wetGroundMaterial;
 
 
     public AudioSource audioSource;
     public AudioClip plantSFX;
     public AudioClip harvestSFX;
-    public AudioClip spraySFX;
+
+    public GameObject promptCanvas;
 
     bool doIHaveSeeds;
     bool doIHaveWater;
 
+    void Awake() {
+        promptCanvas = GameObject.FindGameObjectWithTag("Prompt");
+        promptCanvas.SetActive(false);
+    }
     void Start()
     {
         originalReticleColor = reticleImage.color;
@@ -47,11 +55,13 @@ public class PlantingGroundController : MonoBehaviour
 
     void ShootProjectile()
     {
-        // TODO: have different sound for spray and watering
         if ((Input.GetButtonDown("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 0)
             || (Input.GetButtonDown("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 1 && doIHaveWater))
         {
-            audioSource.PlayOneShot(spraySFX);
+            audioSource.PlayOneShot(currentSFX);
+        } else if (Input.GetButtonDown("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 1 && !doIHaveWater) {
+            promptCanvas.SetActive(true);
+            Invoke("DeactivatePromptWithDelay", 2);
         }
 
         if (Input.GetButtonUp("Fire1"))
@@ -68,6 +78,10 @@ public class PlantingGroundController : MonoBehaviour
         {
             currentVFX.Stop();
         }
+    }
+
+    void DeactivatePromptWithDelay() {
+        promptCanvas.SetActive(false);
     }
 
     void FixedUpdate()
@@ -137,6 +151,7 @@ public class PlantingGroundController : MonoBehaviour
         int plantValue = plantingGround.transform.GetChild(0).gameObject.GetComponent<PlantGrowthBehavior>().moniesAmount;
         FindObjectOfType<LevelManager>().addToCurrentMoney(plantValue);
         Destroy(plantingGround.transform.GetChild(0).gameObject);
+        plantingGround.collider.gameObject.GetComponent<MeshRenderer>().material = dryGroundMaterial;
         plantingGround.collider.tag = "EmptyPlantingGround";
         // maybe add some cute effect and sound when you harvest
     }
@@ -152,6 +167,7 @@ public class PlantingGroundController : MonoBehaviour
     void WaterCrop(RaycastHit plantingGround)
     {
         plantingGround.transform.GetChild(0).gameObject.GetComponent<PlantGrowthBehavior>().WaterPlantOnce(inventory);
+        plantingGround.collider.gameObject.GetComponent<MeshRenderer>().material = wetGroundMaterial;
     }
 
     void Shoot()

@@ -3,7 +3,16 @@ guid: ed4f7bb7e1d24954a9850d769e551805
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - reticleImage: {instanceID: 0}
+  - plantPrefab: {instanceID: 0}
+  - inventory: {instanceID: 0}
+  - projectilePrefab: {instanceID: 0}
+  - dryGroundMaterial: {fileID: 2100000, guid: acd3efd33fd3ec943b5cb00bd8d54be7, type: 2}
+  - wetGroundMaterial: {fileID: 2100000, guid: 9905e2e9774b080499ed54461197dcaa, type: 2}
+  - audioSource: {instanceID: 0}
+  - plantSFX: {instanceID: 0}
+  - harvestSFX: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

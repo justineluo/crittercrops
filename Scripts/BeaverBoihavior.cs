@@ -68,8 +68,6 @@ public class BeaverBoihavior : MonoBehaviour
     {
         anim.SetInteger("animState", 1);
 
-        
-
         agent.speed = 3f;
 
         if(Vector3.Distance(transform.position, nextDestination) <= 2)
@@ -90,7 +88,6 @@ public class BeaverBoihavior : MonoBehaviour
 
         if (!startedConvo) 
         {
-            Debug.Log("Conversation");
             FindObjectOfType<DialogManager>().StartDialog(NPCname);
             startedConvo = true;
         }

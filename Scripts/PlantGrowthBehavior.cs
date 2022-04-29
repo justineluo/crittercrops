@@ -47,9 +47,9 @@ public class PlantGrowthBehavior : MonoBehaviour
         }
     }
 
-    // removes water from inventory after 3 second watering period
+    // removes water from inventory after 2 second watering period
     IEnumerator RemoveWater(InventoryObject inventory) {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         inventory.RemoveOneWaterItem();
     }
 }

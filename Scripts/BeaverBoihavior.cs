@@ -10,6 +10,7 @@ public class BeaverBoihavior : MonoBehaviour
     public string NPCname = "Beaver Boi";
     public GameObject player;
     public GameObject dialogCanvas;
+    public GameObject reticle;
 
     public static bool startedConvo = false;
     GameObject[] wanderPoints;
@@ -68,6 +69,7 @@ public class BeaverBoihavior : MonoBehaviour
     void UpdateStrollState()
     {
         anim.SetInteger("animState", 1);
+        reticle.SetActive(true);
 
         agent.speed = 3f;
 
@@ -86,6 +88,7 @@ public class BeaverBoihavior : MonoBehaviour
     void UpdateConverseState()
     {
         anim.SetInteger("animState", 0);
+        reticle.SetActive(false);
 
         if (!startedConvo)
         {

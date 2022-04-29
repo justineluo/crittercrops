@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 525565594462708015}
   - component: {fileID: -1613933486492364788}
   m_Layer: 0
-  m_Name: WatermelonSeedPickup
+  m_Name: AvocadoSeedPickup
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7eb4325bee944894fad481ceb0733a47, type: 2}
+  - {fileID: 2100000, guid: 46c928a309ee159419730c6886836950, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d467dac04e4104d86a45e372313a8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 6eb0143f31b1f9343a79cb73721fd3bd, type: 2}
+  item: {fileID: 11400000, guid: 2f1e5bc784a4fc947b18a7f3499f54d8, type: 2}
 --- !u!135 &525565594462708015
 SphereCollider:
   m_ObjectHideFlags: 0

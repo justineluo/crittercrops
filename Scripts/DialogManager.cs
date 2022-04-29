@@ -31,7 +31,7 @@ public class DialogManager : MonoBehaviour
         sentences.Enqueue("If you manage to kill them, you can pick up the seeds they drop by making contact.");
         sentences.Enqueue("You can grow crops out of these seeds for money.");
         sentences.Enqueue("Then you can try planting in this farm land here by pressing q.");
-        sentences.Enqueue("Once the plant's ready, use the shovel to harvest it.");
+        sentences.Enqueue("Once the plant's ready, press 3 to use the shovel to harvest it.");
         sentences.Enqueue("To open and close the inventory, press x.");
         sentences.Enqueue("To run, press Shift.");
         sentences.Enqueue("If you forget anything, press h for help or come talk to me again!");

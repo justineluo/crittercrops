@@ -2402,10 +2402,15 @@ MonoBehaviour:
   weaponVFX:
   - {fileID: 232082028694348410}
   - {fileID: 3384967713448780739}
-  weaponSFX: []
+  - {fileID: 2139389443372662131, guid: cf0d4eaaa60784e04abc10c9bcc51ec2, type: 3}
+  weaponSFX:
+  - {fileID: 8300000, guid: 7d36276fd9ccc854ea5d2ac99af8375b, type: 3}
+  - {fileID: 8300000, guid: 260a7c8bd0b506643a3889b0df3d9d8b, type: 3}
+  - {fileID: 8300000, guid: a57ac5a162fdb4123902664317c9cd23, type: 3}
   weapons:
   - {fileID: 9169644952384207370}
   - {fileID: 3158169415453158824}
+  - {fileID: 8661473548639956731, guid: 883e6e88fc46b42c2844703c486e48a5, type: 3}
   weaponUI: {fileID: 0}
 --- !u!1 &6500704480824507404
 GameObject:

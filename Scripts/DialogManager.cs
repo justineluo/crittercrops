@@ -11,15 +11,9 @@ public class DialogManager : MonoBehaviour
     public Text dialogText;
     public GameObject dialogCanvas;
     public static bool isDialogue;
-    public GameObject recticle;
 
     void Awake()
     {
-        if (recticle == null)
-        {
-            recticle = GameObject.FindGameObjectWithTag("Crosshair");
-        }
-
         AddDialogue();
     }
 
@@ -47,7 +41,6 @@ public class DialogManager : MonoBehaviour
     public void StartDialog(string npcName)
     {
         AddDialogue();
-        recticle.SetActive(false);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         nameText.text = npcName;
@@ -74,7 +67,6 @@ public class DialogManager : MonoBehaviour
     void EndDialog()
     {
         CancelInvoke();
-        recticle.SetActive(true);
         dialogCanvas.SetActive(false);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;

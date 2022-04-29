@@ -34,6 +34,7 @@ public class PlantingGroundController : MonoBehaviour
 
     Coroutine cooldownCoroutine;
     public Slider cooldownSlider;
+    public float cooldownTime = 2;
 
     void Awake()
     {
@@ -44,6 +45,10 @@ public class PlantingGroundController : MonoBehaviour
     {
         originalReticleColor = reticleImage.color;
         audioSource = GetComponent<AudioSource>();
+        if (cooldownSlider != null)
+        {
+            cooldownSlider.maxValue = cooldownTime;
+        }
     }
     // Update is called once per frame
     void Update()
@@ -64,7 +69,7 @@ public class PlantingGroundController : MonoBehaviour
         {
             audioSource.PlayOneShot(currentSFX);
             currentVFX.Play();
-            cooldownCoroutine = StartCoroutine(WeaponCooldown());
+            cooldownCoroutine = StartCoroutine(WeaponCooldown(cooldownTime));
         }
         else if (Input.GetButtonDown("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 1 && !doIHaveWater)
         {
@@ -80,6 +85,10 @@ public class PlantingGroundController : MonoBehaviour
             {
                 StopCoroutine(cooldownCoroutine);
             }
+            if (cooldownSlider != null)
+            {
+                cooldownSlider.value = cooldownTime;
+            }
         }
     }
 
@@ -88,9 +97,17 @@ public class PlantingGroundController : MonoBehaviour
         promptCanvas.SetActive(false);
     }
 
-    IEnumerator WeaponCooldown()
+    IEnumerator WeaponCooldown(float countdown)
     {
-        yield return new WaitForSeconds(3);
+        while (countdown > 0)
+        {
+            countdown -= Time.deltaTime;
+            if (cooldownSlider != null)
+            {
+                cooldownSlider.value = countdown;
+            }
+            yield return null;
+        }
         audioSource.Stop();
         currentVFX.Stop();
     }

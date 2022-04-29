@@ -32,7 +32,11 @@ public class PlantingGroundController : MonoBehaviour
     bool doIHaveSeeds;
     bool doIHaveWater;
 
-    void Awake() {
+    Coroutine cooldownCoroutine;
+    public Slider cooldownSlider;
+
+    void Awake()
+    {
         promptCanvas = GameObject.FindGameObjectWithTag("Prompt");
         promptCanvas.SetActive(false);
     }
@@ -60,8 +64,10 @@ public class PlantingGroundController : MonoBehaviour
         {
             audioSource.PlayOneShot(currentSFX);
             currentVFX.Play();
-            Invoke("WeaponCooldown", 2);
-        } else if (Input.GetButtonDown("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 1 && !doIHaveWater) {
+            cooldownCoroutine = StartCoroutine(WeaponCooldown());
+        }
+        else if (Input.GetButtonDown("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 1 && !doIHaveWater)
+        {
             promptCanvas.SetActive(true);
             Invoke("DeactivatePromptWithDelay", 2);
         }
@@ -70,14 +76,21 @@ public class PlantingGroundController : MonoBehaviour
         {
             audioSource.Stop();
             currentVFX.Stop();
+            if (cooldownCoroutine != null)
+            {
+                StopCoroutine(cooldownCoroutine);
+            }
         }
     }
 
-    void DeactivatePromptWithDelay() {
+    void DeactivatePromptWithDelay()
+    {
         promptCanvas.SetActive(false);
     }
 
-    void WeaponCooldown() {
+    IEnumerator WeaponCooldown()
+    {
+        yield return new WaitForSeconds(3);
         audioSource.Stop();
         currentVFX.Stop();
     }

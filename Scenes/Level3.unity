@@ -421,7 +421,7 @@ MonoBehaviour:
   y: 0.5
   zMin: -6
   zMax: 6
-  maxEnemies: 8
+  maxEnemies: 20
   spawnRate: 5
 --- !u!4 &21886448
 Transform:
@@ -12011,7 +12011,7 @@ MonoBehaviour:
   y: 0.5
   zMin: -6
   zMax: 6
-  maxEnemies: 10
+  maxEnemies: 20
   spawnRate: 5
 --- !u!4 &844949890
 Transform:
@@ -13199,7 +13199,7 @@ MonoBehaviour:
   y: 0.5
   zMin: -6
   zMax: 6
-  maxEnemies: 4
+  maxEnemies: 20
   spawnRate: 5
 --- !u!1001 &991266028
 PrefabInstance:
@@ -16298,7 +16298,7 @@ MonoBehaviour:
   y: 0.5
   zMin: -7
   zMax: 7
-  maxEnemies: 5
+  maxEnemies: 20
   spawnRate: 5
 --- !u!4 &1213834367
 Transform:

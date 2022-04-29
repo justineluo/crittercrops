@@ -5,6 +5,7 @@ using UnityEngine;
 public class InventoryScreen : MonoBehaviour
 {
     public GameObject inventoryScreen;
+    public GameObject waterInventory;
     public static bool isOpen = true;
 
     // Start is called before the first frame update
@@ -13,6 +14,10 @@ public class InventoryScreen : MonoBehaviour
         if (inventoryScreen == null)
         {
             inventoryScreen = GameObject.FindGameObjectWithTag("InventoryScreen");
+        }
+        if (waterInventory == null)
+        {
+            waterInventory = GameObject.FindGameObjectWithTag("WaterInventory");
         }
     }
 
@@ -24,12 +29,14 @@ public class InventoryScreen : MonoBehaviour
             if (isOpen == false)
             {
                 inventoryScreen.SetActive(true);
+                waterInventory.SetActive(true);
                 isOpen = true;
             }
 
             else
             {
                 inventoryScreen.SetActive(false);
+                waterInventory.SetActive(false);
                 isOpen = false;
             }
 

@@ -14,6 +14,7 @@ public class PlantingGroundController : MonoBehaviour
     public GameObject plantPrefab;
     public static int moneyCount = 0;
     public InventoryObject inventory;
+    public InventoryObject waterInventory;
     public static ParticleSystem currentVFX;
     public static AudioClip currentSFX;
     bool isWatering;
@@ -29,10 +30,12 @@ public class PlantingGroundController : MonoBehaviour
 
     public GameObject promptCanvas;
 
-    bool doIHaveSeeds;
+    bool doIHaveCurrentSeeds;
     bool doIHaveWater;
+    public SeedObject currentSeed;
 
-    void Awake() {
+    void Awake()
+    {
         promptCanvas = GameObject.FindGameObjectWithTag("Prompt");
         promptCanvas.SetActive(false);
     }
@@ -44,8 +47,8 @@ public class PlantingGroundController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        doIHaveSeeds = inventory.GetSeedCount() > 0;
-        doIHaveWater = inventory.GetWaterCount() > 0;
+        doIHaveCurrentSeeds = inventory.GetSeedCount(currentSeed.description) > 0;
+        doIHaveWater = waterInventory.GetWaterCount() > 0;
 
         if (!HelpPanelBehavior.isGamePaused)
         {
@@ -59,7 +62,9 @@ public class PlantingGroundController : MonoBehaviour
             || (Input.GetButtonDown("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 1 && doIHaveWater))
         {
             audioSource.PlayOneShot(currentSFX);
-        } else if (Input.GetButtonDown("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 1 && !doIHaveWater) {
+        }
+        else if (Input.GetButtonDown("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 1 && !doIHaveWater)
+        {
             promptCanvas.SetActive(true);
             Invoke("DeactivatePromptWithDelay", 2);
         }
@@ -80,7 +85,8 @@ public class PlantingGroundController : MonoBehaviour
         }
     }
 
-    void DeactivatePromptWithDelay() {
+    void DeactivatePromptWithDelay()
+    {
         promptCanvas.SetActive(false);
     }
 
@@ -101,7 +107,7 @@ public class PlantingGroundController : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.forward, out hit, 5))
         {
 
-            if (hit.collider.CompareTag("EmptyPlantingGround") && doIHaveSeeds)
+            if (hit.collider.CompareTag("EmptyPlantingGround") && doIHaveCurrentSeeds)
             {
                 UpdateReticle(reticlePlantingColor, reducedReticleSize, false);
                 if (Input.GetKeyDown(KeyCode.Q))
@@ -166,7 +172,7 @@ public class PlantingGroundController : MonoBehaviour
     }
     void WaterCrop(RaycastHit plantingGround)
     {
-        plantingGround.transform.GetChild(0).gameObject.GetComponent<PlantGrowthBehavior>().WaterPlantOnce(inventory);
+        plantingGround.transform.GetChild(0).gameObject.GetComponent<PlantGrowthBehavior>().WaterPlantOnce(waterInventory);
         plantingGround.collider.gameObject.GetComponent<MeshRenderer>().material = wetGroundMaterial;
     }
 

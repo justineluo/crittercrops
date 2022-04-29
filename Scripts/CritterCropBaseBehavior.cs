@@ -47,8 +47,9 @@ public class CritterCropBaseBehavior : MonoBehaviour
         float step = moveSpeed * Time.deltaTime;
 
         Vector3 groundedPlayerPosition = new Vector3(player.position.x, transform.position.y, player.position.z);
-        float distance = Vector3.Distance(transform.position, groundedPlayerPosition);
-        if (distance < critterSightRadius && distance > 1 * transform.localScale.x)
+        float groundedDistance = Vector3.Distance(transform.position, groundedPlayerPosition);
+        float distance = Vector3.Distance(transform.position, player.position);
+        if (distance < critterSightRadius && groundedDistance > 1 * transform.localScale.x)
         {
             if (isNewSighting)
             {
@@ -133,7 +134,7 @@ public class CritterCropBaseBehavior : MonoBehaviour
             Vector3 effectPosition = transform.position;
             effectPosition.y = transform.position.y + 1;
             Instantiate(critterDieVFX, effectPosition, transform.rotation);
-            Instantiate(seedPrefab, transform.position + new Vector3(0, -0.25f, 0), transform.rotation);
+            Instantiate(seedPrefab, new Vector3(transform.position.x, .75f, transform.position.z), transform.rotation);
 
         }
     }

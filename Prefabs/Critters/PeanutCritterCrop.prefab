@@ -182,10 +182,11 @@ MonoBehaviour:
   bugSprayDamage: 1
   startingHealth: 300
   audioSource: {fileID: 0}
-  critterDieSFX: {fileID: 8300000, guid: 80e397195ea2940b69ee7bdbded856a5, type: 3}
+  critterDieSFX: {fileID: 8300000, guid: f2c39ea8004aa804c8f81d24863f11ff, type: 3}
   critterDieVFX: {fileID: 4095616659207562207, guid: fd6511e8d14174f2abc532bb86a62727, type: 3}
   noticePlayerSFX: {fileID: 8300000, guid: 05c3a437e89dec74c97f50a914ceffbd, type: 3}
   attackRate: 3
+  healthSlider: {fileID: 0}
 --- !u!82 &5455035235309709613
 AudioSource:
   m_ObjectHideFlags: 0

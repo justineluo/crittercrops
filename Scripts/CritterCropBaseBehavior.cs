@@ -45,8 +45,10 @@ public class CritterCropBaseBehavior : MonoBehaviour
     void Update()
     {
         float step = moveSpeed * Time.deltaTime;
-        float distance = Vector3.Distance(transform.position, player.position);
-        if (distance < critterSightRadius)
+
+        Vector3 groundedPlayerPosition = new Vector3(player.position.x, transform.position.y, player.position.z);
+        float distance = Vector3.Distance(transform.position, groundedPlayerPosition);
+        if (distance < critterSightRadius && distance > 1 * transform.localScale.x)
         {
             if (isNewSighting)
             {
@@ -56,14 +58,13 @@ public class CritterCropBaseBehavior : MonoBehaviour
 
             var height = transform.lossyScale.y;
             transform.LookAt(player);
-            Vector3 groundedPlayerPosition = new Vector3(player.position.x, transform.position.y, player.position.z);
 
-            rb.MovePosition(Vector3.MoveTowards(transform.position, groundedPlayerPosition, step));
+            transform.position = Vector3.MoveTowards(transform.position, groundedPlayerPosition, step);
         }
         else
         {
-            rb.velocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
+            // rb.velocity = Vector3.zero;
+            // rb.angularVelocity = Vector3.zero;
             isNewSighting = true;
         }
 

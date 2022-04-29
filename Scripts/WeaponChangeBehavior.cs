@@ -41,7 +41,28 @@ public class WeaponChangeBehavior : MonoBehaviour
             weaponVFX[selectedWeaponIndex].Stop();
             selectedWeaponIndex = 1;
         }
-
+        if(Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            // scroll down
+            if(selectedWeaponIndex >= weaponVFX.Length -1)
+            {
+                selectedWeaponIndex = 0;
+            } else {
+                
+                selectedWeaponIndex++;
+            }
+        }
+        if(Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            // scroll up
+            if(selectedWeaponIndex <= 0)
+            {
+                selectedWeaponIndex = weaponVFX.Length - 1;
+            } else {
+                
+                selectedWeaponIndex--;
+            }
+        }
         if (previousWeaponIndex != selectedWeaponIndex)
         {
             previousWeaponIndex = selectedWeaponIndex;
@@ -50,6 +71,7 @@ public class WeaponChangeBehavior : MonoBehaviour
             UpdateWeapon();
             UpdatePlantingGround();
         }
+
     }
 
     void UpdatePlantingGround()

@@ -21,6 +21,7 @@ public class PlantingGroundController : MonoBehaviour
     public float projectileSpeed = 9f;
     public Material dryGroundMaterial;
     public Material wetGroundMaterial;
+    public Animator shovelAnimator;
 
 
     public AudioSource audioSource;
@@ -65,7 +66,8 @@ public class PlantingGroundController : MonoBehaviour
     void ShootProjectile()
     {
         if ((Input.GetButtonDown("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 0)
-            || (Input.GetButtonDown("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 1 && doIHaveWater))
+            || (Input.GetButtonDown("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 1 && doIHaveWater)
+            || Input.GetButtonDown("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 2)
         {
             audioSource.PlayOneShot(currentSFX);
             currentVFX.Play();
@@ -139,10 +141,10 @@ public class PlantingGroundController : MonoBehaviour
                     audioSource.PlayOneShot(plantSFX);
                 }
             }
-            else if (hit.collider.CompareTag("FullGrownPlantingGround"))
+            else if (hit.collider.CompareTag("FullGrownPlantingGround") && WeaponChangeBehavior.selectedWeaponIndex == 2)
             {
                 UpdateReticle(reticleHarvestingColor, reducedReticleSize, true);
-                if (Input.GetKeyDown(KeyCode.R))
+                if (Input.GetButton("Fire1"))
                 {
                     HarvestPlant(hit);
                     audioSource.PlayOneShot(harvestSFX);

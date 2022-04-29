@@ -9638,7 +9638,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011408405072, guid: e318266f60803d548a4b409b52b39d8d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 4000011408405072, guid: e318266f60803d548a4b409b52b39d8d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12975,6 +12975,14 @@ PrefabInstance:
       propertyPath: reticleImage
       value: 
       objectReference: {fileID: 1708630761}
+    - target: {fileID: 2804228357279637090, guid: 9947a75865be1844d832cf4578476330, type: 3}
+      propertyPath: dryGroundMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: acd3efd33fd3ec943b5cb00bd8d54be7, type: 2}
+    - target: {fileID: 2804228357279637090, guid: 9947a75865be1844d832cf4578476330, type: 3}
+      propertyPath: wetGroundMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 9905e2e9774b080499ed54461197dcaa, type: 2}
     - target: {fileID: 6437292023484635559, guid: 9947a75865be1844d832cf4578476330, type: 3}
       propertyPath: m_Name
       value: Player

@@ -59,6 +59,8 @@ public class PlantingGroundController : MonoBehaviour
             || (Input.GetButtonDown("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 1 && doIHaveWater))
         {
             audioSource.PlayOneShot(currentSFX);
+            currentVFX.Play();
+            Invoke("WeaponCooldown", 2);
         } else if (Input.GetButtonDown("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 1 && !doIHaveWater) {
             promptCanvas.SetActive(true);
             Invoke("DeactivatePromptWithDelay", 2);
@@ -67,21 +69,17 @@ public class PlantingGroundController : MonoBehaviour
         if (Input.GetButtonUp("Fire1"))
         {
             audioSource.Stop();
-        }
-        if ((Input.GetButton("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 0)
-            || (Input.GetButton("Fire1") && WeaponChangeBehavior.selectedWeaponIndex == 1 && doIHaveWater))
-        {
-            currentVFX.Play();
-            // Shoot();
-        }
-        else
-        {
             currentVFX.Stop();
         }
     }
 
     void DeactivatePromptWithDelay() {
         promptCanvas.SetActive(false);
+    }
+
+    void WeaponCooldown() {
+        audioSource.Stop();
+        currentVFX.Stop();
     }
 
     void FixedUpdate()

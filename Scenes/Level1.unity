@@ -15647,6 +15647,7 @@ MonoBehaviour:
   NPCname: Beaver Boi
   player: {fileID: 767058868}
   dialogCanvas: {fileID: 2072845483}
+  reticle: {fileID: 1708630759}
 --- !u!195 &1224040547
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -22063,7 +22064,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2376366577590538389, guid: 245330f6f9f338d48a5b544a1fd5c4df, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 2376366577590538389, guid: 245330f6f9f338d48a5b544a1fd5c4df, type: 3}
       propertyPath: m_LocalPosition.x

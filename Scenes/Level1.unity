@@ -339,6 +339,7 @@ MonoBehaviour:
   enemyPrefab2: {fileID: 6398573091955486052, guid: 78dfd51c49659034f8cc7c2770ab417a, type: 3}
   xMin: -6
   xMax: 6
+  y: 0.5
   zMin: -6
   zMax: 6
   maxEnemies: 8
@@ -351,7 +352,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 21886446}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -49.741497, y: -5.1521616, z: 20.438318}
+  m_LocalPosition: {x: -49.741497, y: 0.5, z: 20.438318}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1610424630}
@@ -10925,6 +10926,7 @@ MonoBehaviour:
   enemyPrefab2: {fileID: 6398573091955486052, guid: 78dfd51c49659034f8cc7c2770ab417a, type: 3}
   xMin: -6
   xMax: 6
+  y: 0.5
   zMin: -6
   zMax: 6
   maxEnemies: 10
@@ -10937,7 +10939,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 844949888}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.158504, y: -5.1521616, z: -40.561684}
+  m_LocalPosition: {x: 33.158504, y: 0.5, z: -40.561684}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1610424630}
@@ -14995,6 +14997,7 @@ MonoBehaviour:
   enemyPrefab2: {fileID: 6398573091955486052, guid: 78dfd51c49659034f8cc7c2770ab417a, type: 3}
   xMin: -8
   xMax: 8
+  y: 0.5
   zMin: -7
   zMax: 7
   maxEnemies: 5
@@ -15007,7 +15010,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1213834365}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.258502, y: -5.1521616, z: 27.738317}
+  m_LocalPosition: {x: 2.258502, y: 0.5, z: 27.738317}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1610424630}
@@ -19212,7 +19215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1610424629}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.241498, y: 5.1521616, z: 14.061682}
+  m_LocalPosition: {x: 4.241498, y: 0, z: 14.061682}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1213834367}
@@ -22438,6 +22441,7 @@ MonoBehaviour:
   enemyPrefab2: {fileID: 6398573091955486052, guid: 78dfd51c49659034f8cc7c2770ab417a, type: 3}
   xMin: -6
   xMax: 6
+  y: 0.5
   zMin: -6
   zMax: 6
   maxEnemies: 5
@@ -22450,7 +22454,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1909356728}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -36.041496, y: -5.1521616, z: -52.461685}
+  m_LocalPosition: {x: -36.041496, y: 0.5, z: -52.461685}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1610424630}
@@ -23106,6 +23110,7 @@ MonoBehaviour:
   enemyPrefab2: {fileID: 6398573091955486052, guid: 78dfd51c49659034f8cc7c2770ab417a, type: 3}
   xMin: -6
   xMax: 6
+  y: 0.5
   zMin: -6
   zMax: 6
   maxEnemies: 4
@@ -23118,7 +23123,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1977877708}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 35.258503, y: -5.1521616, z: 22.83832}
+  m_LocalPosition: {x: 35.258503, y: 0.5, z: 22.83832}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1610424630}

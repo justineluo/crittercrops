@@ -39,12 +39,12 @@ public class EnemySpawner : MonoBehaviour
             Vector3 enemyPosition = transform.position;
             enemyPosition.x += Random.Range(xMin, xMax);
 
-            enemyPosition.y = 0.5f;
-            enemyPosition.z += transform.position.x + Random.Range(zMin, zMax);
+            // enemyPosition.y = 0.5f;
+            enemyPosition.z += Random.Range(zMin, zMax);
 
-            int enemyIndex = Random.Range(0, 2);
+            float enemyIndex = Random.Range(0, 2);
             GameObject enemyPrefab;
-            if (enemyIndex == 0)
+            if (enemyIndex < 1)
             {
                 enemyPrefab = enemyPrefab1;
             }

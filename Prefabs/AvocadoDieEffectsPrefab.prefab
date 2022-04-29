@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2140727500710933360}
   - component: {fileID: 1723722804736146038}
   - component: {fileID: 1723722804736146039}
-  - component: {fileID: -1384652925780042627}
+  - component: {fileID: 8626010484101504147}
   m_Layer: 0
-  m_Name: PeanutDieEffectsPrefab
+  m_Name: AvocadoDieEffectsPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -223,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.67095476, b: 0.0141509175, a: 1}
+      maxColor: {r: 0.10110741, g: 0.509434, b: 0.059594143, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4805,7 +4805,7 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &-1384652925780042627
+--- !u!114 &8626010484101504147
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

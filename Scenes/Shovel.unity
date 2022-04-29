@@ -22157,10 +22157,10 @@ MonoBehaviour:
     Left click: Spray bugspray
     or water
 
-    1 and 2: switch between bugspray gun and watering can
+    1 and 2 and 3: switch between bugspray gun and watering can and
+    shovel (to harvest)
 
-    q: Plant
-    seeds
+    q: Plant seeds
 
     r: Harvest crops
 

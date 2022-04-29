@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public float airControl = 10f;
     Vector3 input, moveDirection;
     public InventoryObject inventory;
+    public InventoryObject waterInventory;
     public AudioClip jumpSFX;
     public AudioClip walkSFX;
     public AudioClip pickupSFX;
@@ -114,7 +115,14 @@ public class PlayerController : MonoBehaviour
             var item = other.GetComponent<Item>();
 
             audioSource.PlayOneShot(pickupSFX);
-            inventory.AddItem(item.item, 1);
+            if (other.gameObject.CompareTag("Item"))
+            {
+                inventory.AddItem(item.item, 1);
+            }
+            else
+            {
+                waterInventory.AddItem(item.item, 1);
+            }
             Destroy(other.gameObject);
         }
 

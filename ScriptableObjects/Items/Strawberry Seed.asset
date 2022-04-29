@@ -15,3 +15,4 @@ MonoBehaviour:
   prefab: {fileID: 1394828601469701973, guid: ebb64a01a794df14cb7d67a1bff0ec0f, type: 3}
   type: 0
   description: strawberry seed
+  plantPrefab: {fileID: 8929692554874055027, guid: 5d90bb14f625c15479df08d8d5fa0fd9, type: 3}

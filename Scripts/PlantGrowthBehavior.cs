@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlantGrowthBehavior : MonoBehaviour
 {
 
-    public float startScale = 1;
+    public Vector3 startVectorScale;
+    float scale = .25f;
     public float numOfStages = 4;
     float timeElapsed = 0;
     public float lerpDuration = 100;
@@ -13,7 +14,8 @@ public class PlantGrowthBehavior : MonoBehaviour
     bool isWatered;
     void Start()
     {
-        transform.localScale = Vector3.one * startScale;
+        startVectorScale = transform.localScale;
+        transform.localScale = startVectorScale * scale;
     }
 
     void FixedUpdate()
@@ -26,8 +28,7 @@ public class PlantGrowthBehavior : MonoBehaviour
             timeElapsed += Time.deltaTime;
 
             float stage = Mathf.Ceil(growth * numOfStages);
-            transform.localScale = (Vector3.one * stage * startScale);
-
+            transform.localScale = (startVectorScale * stage * scale);
 
             if (stage == numOfStages)
             {
@@ -43,12 +44,12 @@ public class PlantGrowthBehavior : MonoBehaviour
         {
             isWatered = true;
             StartCoroutine(RemoveWater(inventory));
-            lerpDuration = timeElapsed + (lerpDuration - timeElapsed) / 2;
         }
     }
 
     // removes water from inventory after 2 second watering period
-    IEnumerator RemoveWater(InventoryObject inventory) {
+    IEnumerator RemoveWater(InventoryObject inventory)
+    {
         yield return new WaitForSeconds(2f);
         inventory.RemoveOneWaterItem();
     }

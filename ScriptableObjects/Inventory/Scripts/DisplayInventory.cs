@@ -11,6 +11,10 @@ public class DisplayInventory : MonoBehaviour
     public int y_space_between_items;
     public int x_start;
     public int y_start;
+    public GameObject outline;
+    public int selectedItem = 0;
+
+    public bool isWater;
     Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
     // Start is called before the first frame update
     void Start()
@@ -22,6 +26,7 @@ public class DisplayInventory : MonoBehaviour
     void Update()
     {
         UpdateDisplay();
+        UpdateSelectedItem();
     }
 
     public void CreateDisplay()
@@ -42,6 +47,45 @@ public class DisplayInventory : MonoBehaviour
             y_start + (-y_space_between_items * (i / number_of_column)), 0f);
     }
 
+    public void UpdateSelectedItem()
+    {
+        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            if (selectedItem >= inventory.Container.Count - 1)
+            {
+                selectedItem = 0;
+            }
+            else
+            {
+                selectedItem++;
+
+            }
+
+        }
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            if (selectedItem <= 0)
+            {
+
+                selectedItem = inventory.Container.Count - 1;
+            }
+            else
+            {
+
+                selectedItem--;
+            }
+
+        }
+
+        if (inventory.Container.Count != 0)
+        {
+            var currentSeed = inventory.Container[selectedItem].item;
+            if (currentSeed.type == ItemType.Seed)
+            {
+                PlantingGroundController.currentSeed = (SeedObject)currentSeed;
+            }
+        }
+    }
     public void UpdateDisplay()
     {
         for (int i = 0; i < inventory.Container.Count; i++)
@@ -54,9 +98,10 @@ public class DisplayInventory : MonoBehaviour
             {
                 var obj = Instantiate(inventory.Container[i].item.prefab, Vector3.zero, Quaternion.identity, transform);
                 obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-                obj.GetComponentInChildren<Text>().text = inventory.Container[i].amount.ToString();
+                // obj.GetComponentInChildren<Text>().text = inventory.Container[i].amount.ToString();
                 itemsDisplayed.Add(inventory.Container[i], obj);
             }
+            itemsDisplayed[inventory.Container[i]].transform.GetChild(1).gameObject.SetActive(selectedItem == i && !isWater);
         }
     }
     /*

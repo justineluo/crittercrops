@@ -61,7 +61,7 @@ public class CritterCropBaseBehavior : MonoBehaviour
 
             var height = transform.lossyScale.y;
             transform.LookAt(player);
-            if (groundedDistance < 1 * transform.localScale.x)
+            if (groundedDistance > 1 * transform.localScale.x)
             {
                 transform.position = Vector3.MoveTowards(transform.position, groundedPlayerPosition, step);
             }

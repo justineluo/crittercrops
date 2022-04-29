@@ -33,19 +33,28 @@ public class InventoryObject : ScriptableObject
             if (Container[i].item.type == type & Container[i].amount != 0)
             {
                 Container[i].DecreaseItemCount();
-                /*
-                if (Container[i].amount == 0)
-                {
-                    Container.RemoveAt(i);
-                    continue;
-                }*/
+                return;
 
+            }
+        }
+    }
+    void RemoveAnyOneXItemDesc(string descp)
+    {
+        for (int i = 0; i < Container.Count; i++)
+        {
+            if (Container[i].item.description == descp & Container[i].amount != 0)
+            {
+                Container[i].DecreaseItemCount();
                 return;
 
             }
         }
     }
 
+    public void RemoveOneDescpItem(string descp)
+    {
+        RemoveAnyOneXItemDesc(descp);
+    }
     public void RemoveAnyOneSeedItem()
     {
         RemoveAnyOneXItem(ItemType.Seed);
@@ -67,9 +76,21 @@ public class InventoryObject : ScriptableObject
         }
         return count;
     }
-    public int GetSeedCount()
+    int GetItemXDescCount(string descp)
     {
-        return GetItemXCount(ItemType.Seed);
+        int count = 0;
+        for (int i = 0; i < Container.Count; i++)
+        {
+            if (Container[i].item.description == descp)
+            {
+                count += Container[i].amount;
+            }
+        }
+        return count;
+    }
+    public int GetSeedCount(string seed)
+    {
+        return GetItemXDescCount(seed);
     }
     public int GetWaterCount()
     {

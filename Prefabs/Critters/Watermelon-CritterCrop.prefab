@@ -350,7 +350,7 @@ MonoBehaviour:
   startingHealth: 300
   audioSource: {fileID: 0}
   critterDieSFX: {fileID: 8300000, guid: c366ec46d688b654499f2f7af692556e, type: 3}
-  critterDieVFX: {fileID: 4095616659207562207, guid: 64a4e4ef0b1754a089f2429db6af245f, type: 3}
+  critterDieVFX: {fileID: 4095616659207562207, guid: fd6511e8d14174f2abc532bb86a62727, type: 3}
   noticePlayerSFX: {fileID: 8300000, guid: 05c3a437e89dec74c97f50a914ceffbd, type: 3}
   attackRate: 10
   healthSlider: {fileID: 0}

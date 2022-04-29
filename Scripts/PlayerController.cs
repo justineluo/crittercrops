@@ -76,6 +76,16 @@ public class PlayerController : MonoBehaviour
         moveDirection.y -= gravity * Time.deltaTime;
         _controller.Move(moveDirection * Time.deltaTime);
 
+        if (transform.position.y < 0)
+        {
+            FindObjectOfType<LevelManager>().LevelLost();
+        }
+
+        if (LevelManager.isGameOver == true)
+        {
+            inventory.Container.Clear();
+        }
+
         PlayWalkAudio();
     }
 

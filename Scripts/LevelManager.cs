@@ -38,7 +38,7 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
 
-        if (currentMoneyCount == moneyGoal)
+        if (currentMoneyCount >= moneyGoal)
         {
             LevelWin();
         }

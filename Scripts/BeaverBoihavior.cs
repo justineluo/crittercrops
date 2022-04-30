@@ -33,7 +33,7 @@ public class BeaverBoihavior : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         wanderPoints = GameObject.FindGameObjectsWithTag("Wanderpoint");
         agent = GetComponent<NavMeshAgent>();
-        currentState = FSMStates.Stroll;
+        currentState = FSMStates.Converse;
         nextDestination = wanderPoints[0].transform.position;
         anim = GetComponent<Animator>();
     }
@@ -45,9 +45,11 @@ public class BeaverBoihavior : MonoBehaviour
         switch (currentState)
         {
             case FSMStates.Stroll:
+                print("strollin");
                 UpdateStrollState();
                 break;
             case FSMStates.Converse:
+                print("conversin");
                 UpdateConverseState();
                 break;
 
@@ -56,13 +58,10 @@ public class BeaverBoihavior : MonoBehaviour
         {
             agent.speed = 0f;
             currentState = FSMStates.Converse;
-        }
-
-        else
+        } else
         {
             currentState = FSMStates.Stroll;
         }
-
     }
 
 
@@ -105,8 +104,6 @@ public class BeaverBoihavior : MonoBehaviour
             startedConvo = false;
             currentState = FSMStates.Stroll;
         }
-
-
     }
 
     void FaceTarget(Vector3 target)

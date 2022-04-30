@@ -18,7 +18,7 @@ public class HelpPanelBehavior : MonoBehaviour
 
         if (recticle == null)
         {
-            recticle = GameObject.FindGameObjectWithTag("Crosshair");
+            recticle = GameObject.FindGameObjectWithTag("Recticle");
         }
     }
 

@@ -33,6 +33,7 @@ public class PlantingGroundController : MonoBehaviour
 
     bool doIHaveCurrentSeeds;
     bool doIHaveWater;
+    bool isCooledDown = true;
     public static SeedObject currentSeed;
 
     Coroutine cooldownCoroutine;
@@ -88,6 +89,7 @@ public class PlantingGroundController : MonoBehaviour
             if (cooldownCoroutine != null)
             {
                 StopCoroutine(cooldownCoroutine);
+                isCooledDown = true;
             }
             if (cooldownSlider != null)
             {
@@ -110,8 +112,10 @@ public class PlantingGroundController : MonoBehaviour
             {
                 cooldownSlider.value = countdown;
             }
+            isCooledDown = true;
             yield return null;
         }
+        isCooledDown = false;
         audioSource.Stop();
         currentVFX.Stop();
     }
@@ -143,7 +147,7 @@ public class PlantingGroundController : MonoBehaviour
                     audioSource.PlayOneShot(plantSFX);
                 }
             }
-            else if (CheckTag(hit, "FullGrownPlantingGround") && WeaponChangeBehavior.selectedWeaponIndex == 2)
+            else if (CheckTag(hit, "FullGrownPlantingGround") && WeaponChangeBehavior.selectedWeaponIndex == 2 && isCooledDown)
             {
                 UpdateReticle(reticleHarvestingColor, reducedReticleSize, true);
                 if (Input.GetButton("Fire1"))
@@ -152,7 +156,7 @@ public class PlantingGroundController : MonoBehaviour
                     audioSource.PlayOneShot(harvestSFX);
                 }
             }
-            else if (CheckTag(hit, "FullPlantingGround") && doIHaveWater && WeaponChangeBehavior.selectedWeaponIndex == 1)
+            else if (CheckTag(hit, "FullPlantingGround") && doIHaveWater && WeaponChangeBehavior.selectedWeaponIndex == 1 && isCooledDown)
             {
                 UpdateReticle(reticleWaterColor, reducedReticleSize, false);
                 if (Input.GetButton("Fire1"))

@@ -12976,7 +12976,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &905485141
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22285,6 +22285,9 @@ MonoBehaviour:
     3: Switch to shovel to harvest crops
 
     h: Help menu
+
+    x: open/close
+    inventory
 
 '
 --- !u!222 &1746324718

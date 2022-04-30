@@ -17392,6 +17392,9 @@ MonoBehaviour:
 
     h: Help menu
 
+    x: open/close
+    inventory
+
 '
 --- !u!222 &1350558502
 CanvasRenderer:

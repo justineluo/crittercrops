@@ -72,8 +72,19 @@ public class LevelManager : MonoBehaviour
         ///
 
         // call SetGameOverStatus with "YOU WIN!"
-        SetGameOverStatus("YOU WIN!", winSFX);
-        Invoke("LoadNextLevel", 2); // delays it by 2 seconds
+        if (SceneManager.GetActiveScene().buildIndex != 5)
+        {
+            SetGameOverStatus("YOU WIN!", winSFX);
+            Invoke("LoadNextLevel", 2); // delays it by 2 seconds
+        }
+
+        else
+        {
+            SetGameOverStatus("Thanks for playing!!", winSFX); 
+            Time.timeScale = 0.0f;
+            Application.Quit();
+        }
+            
 
     }
 
@@ -84,7 +95,15 @@ public class LevelManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (SceneManager.GetActiveScene().buildIndex != 5)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        else
+        {
+            Application.Quit();
+        }
+        
     }
 
     void SetGameOverStatus(string gameTextMessage, AudioClip sfx)

@@ -27712,6 +27712,10 @@ PrefabInstance:
       propertyPath: wetGroundMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 9905e2e9774b080499ed54461197dcaa, type: 2}
+    - target: {fileID: 5247465036162775840, guid: 9947a75865be1844d832cf4578476330, type: 3}
+      propertyPath: near clip plane
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 6437292023484635559, guid: 9947a75865be1844d832cf4578476330, type: 3}
       propertyPath: m_Name
       value: Player

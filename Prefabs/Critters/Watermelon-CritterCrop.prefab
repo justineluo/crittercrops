@@ -345,7 +345,7 @@ MonoBehaviour:
   player: {fileID: 0}
   critterSightRadius: 10
   damageAmount: 5
-  seedPrefab: {fileID: 525565594462708004, guid: bb4e24c35c1ce1240b5fba87d08f989e, type: 3}
+  seedPrefab: {fileID: 525565594462708004, guid: 1f09e576cf426fc4b9935c2c15844969, type: 3}
   bugSprayDamage: 1
   startingHealth: 200
   audioSource: {fileID: 0}

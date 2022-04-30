@@ -45,11 +45,9 @@ public class BeaverBoihavior : MonoBehaviour
         switch (currentState)
         {
             case FSMStates.Stroll:
-                print("strollin");
                 UpdateStrollState();
                 break;
             case FSMStates.Converse:
-                print("conversin");
                 UpdateConverseState();
                 break;
 

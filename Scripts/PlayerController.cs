@@ -85,6 +85,7 @@ public class PlayerController : MonoBehaviour
         if (LevelManager.isGameOver == true)
         {
             inventory.Container.Clear();
+            waterInventory.Container.Clear();
         }
 
         PlayWalkAudio();
@@ -131,6 +132,7 @@ public class PlayerController : MonoBehaviour
     private void OnApplicationQuit()
     {
         inventory.Container.Clear();
+        waterInventory.Container.Clear();
     }
 
 }
